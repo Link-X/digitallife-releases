@@ -8,6 +8,12 @@ digitallife quietly records what happens on your Mac day to day: which apps you 
 
 ---
 
+[website1: https://digitallife-releases.vercel.app/](https://digitallife-releases.vercel.app/)  
+[website2: https://incomparable-beijinho-246d1c.netlify.app/](https://incomparable-beijinho-246d1c.netlify.app/)  
+[website3: https://digitallife-releases.15555537368xu.workers.dev/](https://digitallife-releases.15555537368xu.workers.dev/)  
+[website4: https://link-x.github.io/digitallife-releases/](https://link-x.github.io/digitallife-releases/)
+
+
 ## 📸 Screenshots
 
 <p align="center">
