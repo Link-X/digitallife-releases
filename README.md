@@ -1,4 +1,4 @@
-# digitallife（数字人生）
+# digitallife
 
 **English** · [简体中文](README.zh.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Español](README.es.md) · [Português](README.pt.md)
 
@@ -50,7 +50,7 @@ digitallife quietly records what happens on your Mac day to day: which apps you 
 ## ⬇️ Download & Install
 
 1. Download the latest `DigitalLife-<version>.dmg` from **[Releases](https://github.com/Link-X/digitallife-releases/releases/latest)**
-2. Open the DMG and **drag the app (数字人生) into Applications**
+2. Open the DMG and **drag the app (Digitallife) into Applications**
 3. **Double-click to launch** — the app is **notarized by Apple**, so there's no "damaged" / "unverified developer" block and no need to "right-click → Open"
 4. On first run, open **权限设置…** (Permissions) from the menu bar and grant the system permissions as guided
 
@@ -77,7 +77,7 @@ This is what digitallife cares about most:
 
 ## 🔄 Check for Updates
 
-App menu **关于数字人生 (About) → 检查更新 (Check for Updates)**: click once manually; if a newer version exists, you'll be prompted with a download link. No background polling, no automatic downloads.
+App menu **about Digitallife (About) → check Updates (Check for Updates)**: click once manually; if a newer version exists, you'll be prompted with a download link. No background polling, no automatic downloads.
 
 ---
 
