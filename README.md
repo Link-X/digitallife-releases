@@ -1,76 +1,78 @@
-# 数字人生（digitallife）
+# digitallife（数字人生）
 
-> 一款原生的 macOS 电脑活动监控 App — **数据全部留在你自己的电脑里**。
+**English** | [简体中文](README.zh.md)
 
-「数字人生」在后台安静地记录你这台 Mac 的日常：用了哪些应用、多久，网络与电量消耗、文件增删、装了卸了什么软件……然后用一个精致的原生菜单栏 App，把这些汇成清晰的日报 / 周报 / 月报。没有云、没有账号、不上传任何数据。
+> A native macOS activity monitor — **all your data stays on your own Mac.**
 
----
-
-## ✨ 能看到什么
-
-- **应用使用时长**与每日排行（带应用图标）
-- **电量与功耗趋势**，逐应用能耗排名（可选）
-- **网络流量**按应用统计
-- **文件活动**：增 / 删 / 改的目录、类型与来源应用
-- **CPU / 内存**占用 Top 榜
-- **窗口标题与空闲时间**、菜单栏 / 后台常驻应用
-- **应用安装 / 卸载**记录
-- **磁盘空间扫描**（大目录 / 大文件定位）与**垃圾清理**
-- **日 / 周 / 月报告**，屏幕时间与上期对比
-- 数据可按天 / 类别清理，支持 **JSON / CSV 导出**
+digitallife quietly records what happens on your Mac day to day: which apps you use and for how long, network and battery/power usage, file changes, apps installed and removed… then presents it all through a polished native menu-bar app as clear daily / weekly / monthly reports. No cloud, no account, nothing uploaded.
 
 ---
 
-## 💻 系统要求
+## ✨ What you can see
 
-- **macOS 13（Ventura）或更高**
-- **Apple Silicon**（M 系列芯片）
-
----
-
-## ⬇️ 下载与安装
-
-1. 到 **[Releases](https://github.com/Link-X/digitallife-releases/releases/latest)** 下载最新的 `DigitalLife-<版本>.dmg`
-2. 打开 DMG，把「数字人生」**拖进「应用程序」**
-3. **双击启动**即可 —— 本 App 已通过 **Apple 公证**，不会出现「已损坏」「无法验证开发者」的拦截，也无需「右键打开」
-4. 首次运行后，从菜单栏点「权限设置…」，按引导逐项授予系统权限
-
-### 需要的权限（都可按需授予，缺了对应功能会自动降级、不影响其他）
-
-| 权限 | 用途 |
-|------|------|
-| 完全磁盘访问 | 浏览器访问历史等 |
-| 辅助功能 | 识别前台应用 |
-| 屏幕录制 | 读取窗口标题（**不截图**） |
-| 自动化（系统事件） | 前台应用 / 窗口 |
+- **App usage time** and daily rankings (with app icons)
+- **Battery & power trends**, per-app energy ranking (optional)
+- **Network traffic** per app
+- **File activity**: created / deleted / modified — directory, type, and originating app
+- **CPU / memory** top list
+- **Window titles & idle time**, menu-bar / background-resident apps
+- **App install / uninstall** history
+- **Disk space scan** (locating large folders / files) and **junk cleanup**
+- **Daily / weekly / monthly reports**, screen time vs. the previous period
+- Data can be cleared by day / category, with **JSON / CSV export**
 
 ---
 
-## 🔒 隐私
+## 💻 Requirements
 
-这是「数字人生」最看重的一点：
-
-- **数据 100% 留在本机**，写入你电脑上的本地数据库，**没有任何网络上报**
-- **唯一一次联网**发生在你**主动点击「检查更新」**时——只请求一个版本号，不发送任何本机数据；平时完全离线
-- 需要更强保护时，可在设置里**开启数据库加密**（密钥存于系统钥匙串）
+- **macOS 13 (Ventura) or later**
+- **Apple Silicon** (M-series chip)
 
 ---
 
-## 🔄 检查更新
+## ⬇️ Download & Install
 
-App 菜单 **「关于数字人生」→「检查更新」**：手动点一次，若有新版会提示并给出下载链接。不后台轮询、不自动下载。
+1. Download the latest `DigitalLife-<version>.dmg` from **[Releases](https://github.com/Link-X/digitallife-releases/releases/latest)**
+2. Open the DMG and **drag the app (数字人生) into Applications**
+3. **Double-click to launch** — the app is **notarized by Apple**, so there's no "damaged" / "unverified developer" block and no need to "right-click → Open"
+4. On first run, open **权限设置…** (Permissions) from the menu bar and grant the system permissions as guided
+
+### Permissions (grant as needed; if one is missing, only that feature degrades — nothing else breaks)
+
+| Permission | Purpose |
+|------------|---------|
+| Full Disk Access | Browser history, etc. |
+| Accessibility | Identify the foreground app |
+| Screen Recording | Read window titles (**no screenshots**) |
+| Automation (System Events) | Foreground app / window |
 
 ---
 
-## 📄 许可证
+## 🔒 Privacy
 
-**专有软件 · 保留一切权利** — Copyright © 2026 许道斌（Daobin Xu）. All Rights Reserved.
+This is what digitallife cares about most:
 
-- **源代码闭源**：除作者外，未经书面授权不得使用、复制、修改、逆向或分发源代码；**"可见"不等于"可用"**。
-- **官方 App 非商业免费自用**：个人（学习 / 研究 / 业余）、非营利组织、教育科研机构、政府机构，可**免费使用**本仓库官方发布的、未经修改的签名公证版 App。
-- **仅限官方渠道自用**：请从本仓库 [Releases](https://github.com/Link-X/digitallife-releases/releases/latest) 下载自用，**不得再分发、转发、拷贝、修改或逆向**。
-- **商业用途须授权**：任何商业使用——**含营利性组织（公司/企业）在经营中使用，即使仅内部员工自用**——须事先取得书面授权。
+- **100% of your data stays local**, written to a database on your own Mac, with **no network reporting** whatsoever
+- **The only network request** happens when **you manually click "Check for Updates"** — it fetches just a version number and sends none of your data; otherwise the app is fully offline
+- For stronger protection, you can **enable database encryption** in Settings (the key is stored in the system Keychain)
 
-> 「非商业」指不以商业利益或金钱报酬为主要目的：个人自用、非营利组织、教育科研机构、政府机构在其非营利/公共职能内使用即属非商业。
+---
 
-授权咨询请联系 **许道斌（Daobin Xu）**（<15555537368xu@gmail.com>）。
+## 🔄 Check for Updates
+
+App menu **关于数字人生 (About) → 检查更新 (Check for Updates)**: click once manually; if a newer version exists, you'll be prompted with a download link. No background polling, no automatic downloads.
+
+---
+
+## 📄 License
+
+**Proprietary software · All rights reserved** — Copyright © 2026 许道斌 (Daobin Xu). All Rights Reserved.
+
+- **Source code is closed**: except for the author, no use, copying, modification, reverse-engineering, or distribution of the source code is permitted without prior written authorization; **"visible" does not mean "usable."**
+- **Official app free for non-commercial use**: individuals (study / research / hobby), non-profit organizations, educational & research institutions, and government bodies may **use free of charge** the officially released, unmodified, signed & notarized app from this repository.
+- **Official channel, personal use only**: download from this repository's [Releases](https://github.com/Link-X/digitallife-releases/releases/latest) for your own use; **redistribution, forwarding, copying, modification, and reverse-engineering are not permitted.**
+- **Commercial use requires authorization**: any commercial use — **including use by a for-profit organization (company / enterprise) in the course of business, even solely internal employee use** — requires prior written authorization.
+
+> "Non-commercial" means use not primarily intended for commercial advantage or monetary compensation: personal use, non-profits, educational & research institutions, and government bodies within their non-profit / public functions.
+
+For licensing inquiries, contact **许道斌 (Daobin Xu)** (<15555537368xu@gmail.com>). Full bilingual terms are in [LICENSE](LICENSE).
