@@ -1,6 +1,6 @@
 # 数字人生（digitallife）
 
-[English](README.md) | **简体中文**
+[English](README.md) · **简体中文** · [日本語](README.ja.md) · [한국어](README.ko.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Español](README.es.md) · [Português](README.pt.md)
 
 > 一款原生的 macOS 电脑活动监控 App — **数据全部留在你自己的电脑里**。
 
