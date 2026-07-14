@@ -1,6 +1,6 @@
 # digitallife（数字人生）
 
-**English** | [简体中文](README.zh.md)
+**English** · [简体中文](README.zh.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Español](README.es.md) · [Português](README.pt.md)
 
 > A native macOS activity monitor — **all your data stays on your own Mac.**
 
