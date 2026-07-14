@@ -8,6 +8,23 @@
 
 ---
 
+## 📸 应用截图
+
+<p align="center">
+  <img src="images/zh/01-overview.png" width="49%" alt="概览">
+  <img src="images/zh/02-report.png" width="49%" alt="报告">
+</p>
+<p align="center">
+  <img src="images/zh/03-files.png" width="49%" alt="文件">
+  <img src="images/zh/04-apps.png" width="49%" alt="应用">
+</p>
+<p align="center">
+  <img src="images/zh/05-clean.png" width="49%" alt="清理">
+  <img src="images/zh/06-data.png" width="49%" alt="数据">
+</p>
+
+---
+
 ## ✨ 能看到什么
 
 - **应用使用时长**与每日排行（带应用图标）

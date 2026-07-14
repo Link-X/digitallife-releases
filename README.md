@@ -8,6 +8,23 @@ digitallife quietly records what happens on your Mac day to day: which apps you 
 
 ---
 
+## 📸 Screenshots
+
+<p align="center">
+  <img src="images/en/01-overview.png" width="49%" alt="Overview">
+  <img src="images/en/02-report.png" width="49%" alt="Report">
+</p>
+<p align="center">
+  <img src="images/en/03-files.png" width="49%" alt="Files">
+  <img src="images/en/04-apps.png" width="49%" alt="Apps">
+</p>
+<p align="center">
+  <img src="images/en/05-clean.png" width="49%" alt="Clean">
+  <img src="images/en/06-data.png" width="49%" alt="Data">
+</p>
+
+---
+
 ## ✨ What you can see
 
 - **App usage time** and daily rankings (with app icons)
