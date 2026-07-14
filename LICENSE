@@ -1,6 +1,17 @@
-# 软件许可协议
+# 软件许可协议 / Software License Agreement
 
 Copyright © 2026 许道斌（Daobin Xu）. All Rights Reserved.
+
+> 本协议以**中文版本为准**；下方英文为正式译文，仅供便利参考。**如中英文之间存在任何
+> 歧义或冲突，一律以中文版本为准。**
+>
+> This Agreement is governed by its **Chinese version**. The English text below is an
+> official translation provided for convenience only. **In case of any discrepancy or
+> conflict between the Chinese and English versions, the Chinese version shall prevail.**
+
+---
+
+# 中文版本（以此为准）
 
 本协议将「本软件」区分为**源代码**与**编译发布的应用程序**两部分，分别授权。
 「本软件」指许道斌（以下称"著作权人"）开发的 digitallife（数字人生）及其源代码、
@@ -69,19 +80,92 @@ Copyright © 2026 许道斌（Daobin Xu）. All Rights Reserved.
 
 ---
 
-SUMMARY (English, non-binding). This is PROPRIETARY software. The SOURCE CODE is
-closed — all rights reserved; no use, copying, modification, reverse-engineering,
-or distribution is permitted without prior written authorization ("source-visible"
-does not mean "usable"). The officially released, UNMODIFIED, signed application
-binary (e.g. the official DMG) may be used and run FREE OF CHARGE by NON-COMMERCIAL
-parties — individuals (personal / study / research / hobby use), non-profits,
-educational & research institutions, and government bodies — obtained ONLY from the
-author's OFFICIAL CHANNEL (the Releases page of
-https://github.com/Link-X/digitallife-releases, plus any other location later
-designated in writing by the author). NON-COMMERCIAL USE means use not primarily
-intended for commercial advantage or monetary compensation; ANY use by a for-profit
-organization in the course of its business — even internal, employee-only use, and
-even without reselling — is COMMERCIAL USE. Redistribution, resale, modification,
-and reverse-engineering are NOT permitted. ANY COMMERCIAL USE requires prior written
-authorization. Provided AS IS, without warranty.
-Contact: 许道斌 (Daobin Xu) <15555537368xu@gmail.com>.
+# English Version (translation; the Chinese version prevails)
+
+This Agreement licenses the "Software" in two separate parts — the **Source Code** and
+the **Compiled Application** — under different terms. The "Software" means digitallife
+（数字人生）developed by 许道斌 (Daobin Xu) (the "Author"), together with its source
+code, binaries, documentation, icons, configuration, and related resources. **The
+Software is PROPRIETARY and NOT open source.**
+
+## Article 1. Source Code — Proprietary, All Rights Reserved
+
+The Source Code of the Software is the exclusive property of the Author. Except for the
+Author, no person or entity may, without prior **WRITTEN** authorization, use, copy,
+download, store, modify, translate, adapt, decompile, disassemble, reverse-engineer, or
+distribute, transfer, rent, lend, sell, sublicense, or publicly disseminate any part of
+the Source Code.
+
+**The fact that the Source Code may be viewable (source-visible) does NOT constitute any
+license to use it; "visible" does not mean "usable."**
+
+## Article 2. Compiled Application — Free for Non-Commercial Use
+
+For the compiled application officially released by the Author through an **Official
+Channel** in **UNMODIFIED** form (such as the officially signed and notarized DMG
+installer, the "Official Application"), and subject to the restrictions in this Article,
+the Author grants the following parties engaged in **Non-Commercial Use** a
+non-exclusive, non-transferable license to use and run the Official Application **FREE
+OF CHARGE**:
+
+- individuals (for personal purposes such as study, research, experimentation, or hobby);
+- non-profit organizations;
+- educational and research institutions;
+- government bodies.
+
+**This license is limited to "use / run" only and does NOT include any of the following:**
+
+- redistributing, reselling, renting, lending, publicly distributing, or sublicensing the
+  Official Application — it must be obtained from an **Official Channel** and must **NOT**
+  be forwarded, copied, or redistributed by others;
+- modifying, decompiling, disassembling, or reverse-engineering the Official Application,
+  or removing or circumventing its digital signature, copyright notices, or update mechanism;
+- incorporating or embedding the Official Application or any part thereof into other
+  products or services.
+
+## Article 3. Commercial Use Requires Authorization
+
+Any **Commercial Use** (as defined in Article 4) requires prior **WRITTEN** (commercial)
+authorization from the Author.
+
+## Article 4. Definitions
+
+**"Non-Commercial Use"** means use not primarily intended for or directed toward
+commercial advantage or monetary compensation. The following constitute Non-Commercial
+Use: (a) use by a natural person for private, non-profit purposes such as study, research,
+experimentation, or hobby; (b) use by non-profit organizations, educational and research
+institutions, and government bodies within the scope of their non-profit or public functions.
+
+**"Commercial Use"** means any use other than the Non-Commercial Use described above, and
+requires prior written authorization. It includes, without limitation:
+
+- **any use by a for-profit organization (including enterprises, companies, sole
+  proprietorships, etc.) in the course of its business — even if the Software is not sold
+  or redistributed, and even if used solely internally by its employees — which constitutes
+  Commercial Use;**
+- using the Software to provide paid products or services, or in activities that directly
+  or indirectly generate revenue;
+- using the Software in paid training, consulting, or outsourcing services.
+
+**"Official Channel"** means the following location(s) controlled by the Author for
+officially releasing the Official Application: the Releases page of the GitHub repository
+`https://github.com/Link-X/digitallife-releases`, and any other release location later
+designated **IN WRITING** by the Author (such as an official website or the App Store).
+Copies obtained from any source other than the above are not within the scope of the
+license granted herein.
+
+## Article 5. Authorization and Contact
+
+Any use beyond the scope expressly granted by this Agreement (including commercial
+authorization and redistribution authorization) requires prior written authorization from
+the Author. For authorization inquiries, contact:
+
+**许道斌 (Daobin Xu)** · <15555537368xu@gmail.com>
+
+## Article 6. Disclaimer
+
+The Software is provided "AS IS", without warranty of any kind, express or implied,
+including but not limited to the warranties of merchantability, fitness for a particular
+purpose, and non-infringement. To the maximum extent permitted by law, the Author shall
+not be liable for any direct, indirect, incidental, special, or consequential damages
+arising from the use of or inability to use the Software.
