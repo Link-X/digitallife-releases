@@ -1,0 +1,87 @@
+# 软件许可协议
+
+Copyright © 2026 许道斌（Daobin Xu）. All Rights Reserved.
+
+本协议将「本软件」区分为**源代码**与**编译发布的应用程序**两部分，分别授权。
+「本软件」指许道斌（以下称"著作权人"）开发的 digitallife（数字人生）及其源代码、
+二进制、文档、图标、配置及相关资源。**本软件为专有软件（proprietary），非开源。**
+
+## 一、源代码：专有，保留一切权利
+
+本软件的**源代码**为著作权人的专有财产。除著作权人外，任何单位或个人未经事先
+**书面授权**，**不得**使用、复制、下载、存储、修改、翻译、演绎、反编译、反汇编、
+逆向工程，或分发、转让、出租、出借、出售、再许可、公开传播源代码的任何部分。
+
+**源代码即便可被查看（source-visible），亦不构成任何使用许可；"可见"不等于"可用"。**
+
+## 二、编译发布的应用程序：非商业免费使用
+
+对于著作权人经**官方渠道**正式发布的、**未经修改**的编译版应用程序（如官方签名
+公证的 DMG 安装包，以下称"官方应用"），在遵守本条限制的前提下，授予从事**非商业
+使用**的下列主体**免费使用、运行**官方应用的非独占、不可转让许可：
+
+- 个人（用于学习、研究、实验、业余等非商业目的）；
+- 非营利组织；
+- 教育与科研机构；
+- 政府机构。
+
+**本许可仅限于"使用 / 运行"，不包含下列任何权利：**
+
+- **再分发、转售、出租、出借、公开分发或再许可官方应用**——官方应用须从**官方渠道**
+  获取，**不得由他人转发、拷贝或二次分发**；
+- 修改、反编译、反汇编、逆向工程官方应用，或去除、规避其数字签名、版权声明与更新机制；
+- 将官方应用或其任何部分并入、嵌入其他产品或服务。
+
+## 三、商业用途须授权
+
+任何**商业使用**（定义见第四条），均须事先取得著作权人的**书面（商业）授权**。
+
+## 四、术语定义
+
+**非商业使用**：指不以商业利益或金钱报酬为主要目的的使用。下列主体在相应范围内的
+使用属非商业使用：(a) 自然人为学习、研究、实验、业余等私人、非营利目的的使用；
+(b) 非营利组织、教育与科研机构、政府机构，在其非营利或公共职能范围内的使用。
+
+**商业使用**：指前述非商业使用之外的一切使用，须事先取得书面授权，**包括但不限于**：
+
+- **任何营利性组织（含企业、公司、个体工商户等）在其经营活动中的使用——即使不销售、
+  不再分发本软件，即使仅供其内部员工自用——均属商业使用**；
+- 将本软件用于提供收费产品或服务，或用于直接、间接产生收入的活动；
+- 在收费的培训、咨询、外包等服务中使用本软件。
+
+**官方渠道**：特指由著作权人控制、用于正式发布官方应用的以下位置——GitHub 发布仓库
+`https://github.com/Link-X/digitallife-releases` 的 Releases 页面，以及著作权人日后
+**以书面形式正式指定**的其他官方发布位置（如官方网站、App Store 等）。经上述渠道之外
+任何来源获取的副本，均不在本许可授予范围内。
+
+## 五、授权与联系
+
+本协议明示授予范围之外的一切使用（含商业授权、再分发授权），均须事先取得著作权人
+书面授权。授权咨询请联系：
+
+**许道斌（Daobin Xu）** · <15555537368xu@gmail.com>
+
+## 六、免责声明
+
+本软件按"现状"（AS IS）提供，不附带任何明示或默示的担保，包括但不限于适销性、
+特定用途适用性及不侵权的担保。在法律允许的最大范围内，著作权人对因使用或无法使用
+本软件而产生的任何直接、间接、附带、特殊或后果性损害不承担任何责任。
+
+---
+
+SUMMARY (English, non-binding). This is PROPRIETARY software. The SOURCE CODE is
+closed — all rights reserved; no use, copying, modification, reverse-engineering,
+or distribution is permitted without prior written authorization ("source-visible"
+does not mean "usable"). The officially released, UNMODIFIED, signed application
+binary (e.g. the official DMG) may be used and run FREE OF CHARGE by NON-COMMERCIAL
+parties — individuals (personal / study / research / hobby use), non-profits,
+educational & research institutions, and government bodies — obtained ONLY from the
+author's OFFICIAL CHANNEL (the Releases page of
+https://github.com/Link-X/digitallife-releases, plus any other location later
+designated in writing by the author). NON-COMMERCIAL USE means use not primarily
+intended for commercial advantage or monetary compensation; ANY use by a for-profit
+organization in the course of its business — even internal, employee-only use, and
+even without reselling — is COMMERCIAL USE. Redistribution, resale, modification,
+and reverse-engineering are NOT permitted. ANY COMMERCIAL USE requires prior written
+authorization. Provided AS IS, without warranty.
+Contact: 许道斌 (Daobin Xu) <15555537368xu@gmail.com>.
