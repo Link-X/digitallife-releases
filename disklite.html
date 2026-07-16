@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DiskLite — see where your disk space went, at a glance</title>
-<meta name="description" content="DiskLite is a native macOS disk-space analyzer: a sunburst view of what fills your disk, plus big files, duplicates and installers. Sandboxed, read-only, 100% local — no network, no account. macOS 13+, Apple Silicon.">
+<title>DiskLite — see where your disk space went, and clean it safely</title>
+<meta name="description" content="DiskLite is a native macOS disk analyzer and cleaner: a sunburst view of what fills your disk, big files, duplicates, old files, junk cleanup and an app uninstaller — cleanup only ever moves items to the Trash. Sandboxed, 100% local — no network, no account. macOS 13+, Apple Silicon.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="DiskLite — see where your space went">
-<meta property="og:description" content="A native macOS disk-space analyzer. Sunburst visualization, read-only, 100% local. No cloud, no account.">
+<meta property="og:description" content="A native macOS disk analyzer and cleaner. Sunburst visualization, Trash-only cleanup, 100% local. No cloud, no account.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -258,9 +258,9 @@
   <div class="wrap hero-inner">
     <div class="hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow reveal d2"><span class="dot"></span> <span data-i18n="hero.eyebrow">macOS · Sandboxed · Read-only</span></span>
+        <span class="eyebrow reveal d2"><span class="dot"></span> <span data-i18n="hero.eyebrow">macOS · Sandboxed · 100% local</span></span>
         <h1 class="hero-title serif reveal d2" data-i18n="hero.title">See where your<br><em>space went.</em></h1>
-        <p class="lede reveal d3" data-i18n="hero.lede">A native disk-space analyzer for macOS. A <b>sunburst view</b> of what fills your disk — plus big files, duplicates and installers. Read-only, <b>100% local</b>, no network, no account.</p>
+        <p class="lede reveal d3" data-i18n="hero.lede">A native disk analyzer and cleaner for macOS. A <b>sunburst view</b> of what fills your disk — plus big files, duplicates, old files and junk. Cleanup only ever moves things <b>to the Trash</b>. <b>100% local</b>, no network, no account.</p>
         <div class="cta reveal d4">
           <a class="btn btn-primary" href="#" id="storeBtn">
             <svg viewBox="0 0 24 24" width="21" height="21" fill="currentColor"><path d="M16.3 1.6c.1 1-.3 2-1 2.8-.7.8-1.8 1.4-2.8 1.3-.1-1 .4-2 1-2.7.8-.8 2-1.4 2.8-1.4zM19 17.3c-.5 1.1-.7 1.6-1.3 2.6-.9 1.4-2.2 3.1-3.7 3.1-1.4 0-1.7-.9-3.6-.9-1.8 0-2.2.9-3.5.9-1.6 0-2.8-1.6-3.7-2.9C1 19.4 0 15.5 1.6 12.9c.8-1.3 2.2-2.1 3.5-2.1 1.4 0 2.3 1 3.5 1 1.1 0 1.8-1 3.5-1 1.2 0 2.5.7 3.4 1.8-3 1.6-2.5 5.9.9 4.7z"/></svg>
@@ -268,7 +268,7 @@
           </a>
           <a class="btn btn-ghost" href="privacy.html" data-i18n="hero.privacy">Privacy Policy</a>
         </div>
-        <p class="req reveal d4" data-i18n="hero.req"><b>Sandboxed &amp; read-only</b> · macOS 13+ · Apple Silicon · <b>8 languages</b></p>
+        <p class="req reveal d4" data-i18n="hero.req"><b>Sandboxed · Trash-only cleanup</b> · macOS 13+ · Apple Silicon · <b>8 languages</b></p>
       </div>
       <div class="hero-figure reveal d5">
         <div class="dial" role="img" aria-label="Sunburst disk map">
@@ -287,7 +287,7 @@
 <!-- ============ TRUST BAR ============ -->
 <div class="trust">
   <div class="wrap">
-    <div class="item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-i18n="trust.sandbox">Sandboxed &amp; read-only</span></div>
+    <div class="item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-i18n="trust.sandbox">Sandboxed · Trash-only cleanup</span></div>
     <div class="item"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" stroke="currentColor" stroke-width="1.4"/><path d="M4 5l16 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> <span data-i18n="trust.nocollect">No network, no data collected</span></div>
     <div class="item"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z" stroke="currentColor" stroke-width="1.8"/><path d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-i18n="trust.langs">8 languages, follows system</span></div>
     <div class="item"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2-7 4 14 2-7h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-i18n="trust.native">Lightweight &amp; native</span></div>
@@ -313,13 +313,13 @@
       </div>
       <div class="card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7a2 2 0 012-2h4l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2V7z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
-        <h3 data-i18n="feat.3t">Big files &amp; duplicates</h3>
-        <p data-i18n="feat.3d">Three ranked lists — the largest files, byte-for-byte duplicates, and leftover installers — so you know exactly what's reclaimable.</p>
+        <h3 data-i18n="feat.3t">Big files, duplicates &amp; old files</h3>
+        <p data-i18n="feat.3d">Four ranked lists — the largest files, byte-for-byte duplicates, leftover installers, and big files untouched for 180+ days — so you know exactly what's reclaimable.</p>
       </div>
       <div class="card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 4v5c0 4-3 7-7 8-4-1-7-4-7-8V7l7-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 8v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="15" r=".4" fill="currentColor" stroke="currentColor"/></svg></div>
-        <h3 data-i18n="feat.4t">Read-only &amp; safe</h3>
-        <p data-i18n="feat.4d">DiskLite only analyzes — it never deletes or moves a thing. And it only ever reads the folders you explicitly grant.</p>
+        <h3 data-i18n="feat.4t">Cleans to the Trash — only</h3>
+        <p data-i18n="feat.4d">Sweep app caches, browser caches, logs and developer junk — even uninstall apps together with their leftovers. Everything goes to the Trash with your confirmation, always reversible.</p>
       </div>
       <div class="card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 10V7a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.7"/></svg></div>
@@ -374,7 +374,7 @@
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="priv.1"><b>100% local.</b> Every scan is processed on your own Mac. No file, name, path or result is ever uploaded.</span></li>
           <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="priv.2"><b>No account, no network.</b> DiskLite works fully offline. No sign-in, no tracking, no analytics SDKs.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="priv.3"><b>You grant, you control.</b> It reads only the folders you pick, and only to read — never to change them.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="priv.3"><b>You grant, you control.</b> It only touches the folders you grant — and cleanup never deletes outright, it only moves items to the Trash.</span></li>
         </ul>
       </div>
       <div class="lock-badge">
@@ -395,7 +395,7 @@
         <span class="store"><small data-i18n="final.store_small">Coming soon on the</small><span data-i18n="final.store_big">Mac App Store</span></span>
       </a>
     </div>
-    <p class="price-note" data-i18n="final.note">macOS 13 (Ventura)+ · Apple Silicon · Sandboxed &amp; read-only</p>
+    <p class="price-note" data-i18n="final.note">macOS 13 (Ventura)+ · Apple Silicon · Sandboxed · Trash-only cleanup</p>
   </div>
 </section>
 
@@ -416,17 +416,17 @@
   var I18N = {
     en: {
       'nav.features':'Features','nav.visual':'Visualize','nav.privacy':'Privacy',
-      'hero.eyebrow':'macOS · Sandboxed · Read-only',
+      'hero.eyebrow':'macOS · Sandboxed · 100% local',
       'hero.title':'See where your<br><em>space went.</em>',
-      'hero.lede':'A native disk-space analyzer for macOS. A <b>sunburst view</b> of what fills your disk — plus big files, duplicates and installers. Read-only, <b>100% local</b>, no network, no account.',
+      'hero.lede':'A native disk analyzer and cleaner for macOS. A <b>sunburst view</b> of what fills your disk — plus big files, duplicates, old files and junk. Cleanup only ever moves things <b>to the Trash</b>. <b>100% local</b>, no network, no account.',
       'hero.store_small':'Coming soon on the','hero.store_big':'Mac App Store','hero.privacy':'Privacy Policy',
-      'hero.req':'<b>Sandboxed &amp; read-only</b> · macOS 13+ · Apple Silicon · <b>8 languages</b>',
-      'trust.sandbox':'Sandboxed &amp; read-only','trust.nocollect':'No network, no data collected','trust.langs':'8 languages, follows system','trust.native':'Lightweight &amp; native',
+      'hero.req':'<b>Sandboxed · Trash-only cleanup</b> · macOS 13+ · Apple Silicon · <b>8 languages</b>',
+      'trust.sandbox':'Sandboxed · Trash-only cleanup','trust.nocollect':'No network, no data collected','trust.langs':'8 languages, follows system','trust.native':'Lightweight &amp; native',
       'feat.kicker':'What it does','feat.h2':'Understand your disk,<br>one ring at a time.','feat.lede':'Point DiskLite at any folder or drive you allow, and it turns raw file sizes into something you can actually read.',
       'feat.1t':'Sunburst space map','feat.1d':'A ring-by-ring view of what fills your disk. Click any wedge to drill into that folder; hover to see its path and size.',
       'feat.2t':'Breakdown by type','feat.2d':'See how much space video, images, documents, archives and installers each take — the whole disk, at a glance.',
-      'feat.3t':'Big files &amp; duplicates','feat.3d':"Three ranked lists — the largest files, byte-for-byte duplicates, and leftover installers — so you know exactly what's reclaimable.",
-      'feat.4t':'Read-only &amp; safe','feat.4d':'DiskLite only analyzes — it never deletes or moves a thing. And it only ever reads the folders you explicitly grant.',
+      'feat.3t':'Big files, duplicates &amp; old files','feat.3d':"Four ranked lists — the largest files, byte-for-byte duplicates, leftover installers, and big files untouched for 180+ days — so you know exactly what's reclaimable.",
+      'feat.4t':'Cleans to the Trash — only','feat.4d':'Sweep app caches, browser caches, logs and developer junk — even uninstall apps together with their leftovers. Everything goes to the Trash with your confirmation, always reversible.',
       'feat.5t':'Private by design','feat.5d':'Runs entirely inside the Apple sandbox. Nothing is uploaded, nothing is collected — your files never leave your Mac.',
       'feat.6t':'Native &amp; 8 languages','feat.6d':'Built with SwiftUI for Apple Silicon, light on resources, and localized into 8 languages that follow your system.',
       'visual.kicker':'The sunburst','visual.h2':'A map, not a spreadsheet.','visual.lede':'Folder sizes are hard to feel as numbers. As nested rings, the space hog is obvious in a second.',
@@ -436,23 +436,23 @@
       'priv.kicker':'Privacy by design','priv.h2':'Your files never leave your Mac.','priv.lede':"There's no server to send anything to — because DiskLite never talks to one.",
       'priv.1':'<b>100% local.</b> Every scan is processed on your own Mac. No file, name, path or result is ever uploaded.',
       'priv.2':'<b>No account, no network.</b> DiskLite works fully offline. No sign-in, no tracking, no analytics SDKs.',
-      'priv.3':'<b>You grant, you control.</b> It reads only the folders you pick, and only to read — never to change them.',
-      'final.kicker':'Reclaim your disk','final.h2':'See your space clearly —<br>keep it entirely yours.','final.store_small':'Coming soon on the','final.store_big':'Mac App Store','final.note':'macOS 13 (Ventura)+ · Apple Silicon · Sandboxed &amp; read-only',
+      'priv.3':'<b>You grant, you control.</b> It only touches the folders you grant — and cleanup never deletes outright, it only moves items to the Trash.',
+      'final.kicker':'Reclaim your disk','final.h2':'See your space clearly —<br>keep it entirely yours.','final.store_small':'Coming soon on the','final.store_big':'Mac App Store','final.note':'macOS 13 (Ventura)+ · Apple Silicon · Sandboxed · Trash-only cleanup',
       'foot.copy':'© 2026 许道斌 (Daobin Xu). All rights reserved.','foot.privacy':'Privacy Policy'
     },
     zh: {
       'nav.features':'功能','nav.visual':'可视化','nav.privacy':'隐私',
-      'hero.eyebrow':'macOS · 沙盒 · 只读分析',
+      'hero.eyebrow':'macOS · 沙盒 · 100% 本地',
       'hero.title':'你的空间<br><em>去哪了？</em>',
-      'hero.lede':'一款原生 macOS 磁盘空间分析工具。用<b>环形图</b>看清磁盘被什么占满——还有大文件、重复文件与安装包。只读、<b>100% 本地</b>，不联网、无账号。',
+      'hero.lede':'一款原生 macOS 磁盘分析与清理工具。用<b>环形图</b>看清磁盘被什么占满——还有大文件、重复文件、旧文件与垃圾缓存。清理只把条目<b>移入废纸篓</b>、随时可恢复；<b>100% 本地</b>，不联网、无账号。',
       'hero.store_small':'即将上架','hero.store_big':'Mac App Store','hero.privacy':'隐私政策',
-      'hero.req':'<b>沙盒只读</b> · macOS 13+ · Apple Silicon · <b>8 种语言</b>',
-      'trust.sandbox':'沙盒 · 只读','trust.nocollect':'不联网 · 不收集数据','trust.langs':'8 种语言 · 跟随系统','trust.native':'原生轻量',
+      'hero.req':'<b>沙盒 · 清理只进废纸篓</b> · macOS 13+ · Apple Silicon · <b>8 种语言</b>',
+      'trust.sandbox':'沙盒 · 清理只进废纸篓','trust.nocollect':'不联网 · 不收集数据','trust.langs':'8 种语言 · 跟随系统','trust.native':'原生轻量',
       'feat.kicker':'它能做什么','feat.h2':'看懂你的磁盘，<br>一环，一环。','feat.lede':'把 DiskLite 指向你授权的任意文件夹或磁盘，它就把冰冷的文件大小，变成你一眼能读懂的画面。',
       'feat.1t':'环形空间图','feat.1d':'一环套一环地看清磁盘被什么占满。点任意扇区下钻进该目录，悬停即可看到它的路径和大小。',
       'feat.2t':'按类型统计','feat.2d':'视频、图片、文档、压缩包、安装包各占多少空间——整块磁盘，一目了然。',
-      'feat.3t':'大文件与重复文件','feat.3d':'三张榜单——最大的文件、逐字节确认的重复文件、残留的安装包——让你清楚知道哪些能清。',
-      'feat.4t':'只读，安全','feat.4d':'DiskLite 只分析，绝不删除或移动任何东西；而且只读取你明确授权的文件夹。',
+      'feat.3t':'大文件、重复与旧文件','feat.3d':'四张榜单——最大的文件、逐字节确认的重复文件、残留安装包、180 天未用的大文件——让你清楚知道哪些能清。',
+      'feat.4t':'清理只进废纸篓','feat.4d':'清扫应用缓存、浏览器缓存、日志与开发者垃圾，还能连同残留一起卸载应用。一切操作先经你确认、只移入废纸篓，随时可恢复。',
       'feat.5t':'隐私优先','feat.5d':'完全运行在 Apple 沙盒内。不上传、不收集——你的文件从不离开你的 Mac。',
       'feat.6t':'原生 · 8 种语言','feat.6d':'用 SwiftUI 为 Apple Silicon 打造，占用极少资源，并本地化为 8 种语言、跟随系统。',
       'visual.kicker':'环形图','visual.h2':'是一张地图，不是表格。','visual.lede':'文件夹大小写成数字很难有体感。变成一圈圈嵌套的环，谁在占空间，一秒就看出来。',
@@ -462,23 +462,23 @@
       'priv.kicker':'隐私，与生俱来','priv.h2':'你的文件，从不离开你的 Mac。','priv.lede':'没有任何服务器可发送——因为 DiskLite 从不与任何服务器通信。',
       'priv.1':'<b>100% 本地。</b>每次扫描都在你自己的 Mac 上处理。文件、文件名、路径、结果，绝不上传。',
       'priv.2':'<b>无账号、不联网。</b>DiskLite 完全离线工作。无需登录，无追踪，无任何分析 SDK。',
-      'priv.3':'<b>你授权，你掌控。</b>它只读取你选择的文件夹，而且只读——绝不改动它们。',
-      'final.kicker':'把空间拿回来','final.h2':'把空间看清楚——<br>并且始终只属于你。','final.store_small':'即将上架','final.store_big':'Mac App Store','final.note':'macOS 13 (Ventura)+ · Apple Silicon · 沙盒只读',
+      'priv.3':'<b>你授权，你掌控。</b>它只触碰你授权的文件夹；清理绝不直接删除，只把条目移入废纸篓。',
+      'final.kicker':'把空间拿回来','final.h2':'把空间看清楚——<br>并且始终只属于你。','final.store_small':'即将上架','final.store_big':'Mac App Store','final.note':'macOS 13 (Ventura)+ · Apple Silicon · 沙盒 · 清理只进废纸篓',
       'foot.copy':'© 2026 许道斌 (Daobin Xu). 保留所有权利。','foot.privacy':'隐私政策'
     },
     ja: {
       'nav.features':'機能','nav.visual':'可視化','nav.privacy':'プライバシー',
-      'hero.eyebrow':'macOS · サンドボックス · 読み取り専用',
+      'hero.eyebrow':'macOS · サンドボックス · 100% ローカル',
       'hero.title':'あなたの容量は<br><em>どこへ？</em>',
-      'hero.lede':'macOS 向けのネイティブなディスク容量アナライザ。<b>サンバースト表示</b>でディスクを占めているものを把握——大きなファイル、重複、インストーラも。読み取り専用、<b>100% ローカル</b>、通信なし、アカウント不要。',
+      'hero.lede':'macOS 向けのネイティブなディスク分析＆クリーンアップツール。<b>サンバースト表示</b>でディスクを占めているものを把握——大きなファイル、重複、古いファイル、不要キャッシュも。クリーンアップは項目を<b>ゴミ箱に移動するだけ</b>でいつでも復元可能。<b>100% ローカル</b>、通信なし、アカウント不要。',
       'hero.store_small':'近日公開','hero.store_big':'Mac App Store','hero.privacy':'プライバシーポリシー',
-      'hero.req':'<b>サンドボックス・読み取り専用</b> · macOS 13+ · Apple Silicon · <b>8 言語</b>',
-      'trust.sandbox':'サンドボックス・読み取り専用','trust.nocollect':'通信なし・データ収集なし','trust.langs':'8 言語・システムに追従','trust.native':'軽量・ネイティブ',
+      'hero.req':'<b>サンドボックス · クリーンアップはゴミ箱のみ</b> · macOS 13+ · Apple Silicon · <b>8 言語</b>',
+      'trust.sandbox':'サンドボックス · ゴミ箱のみ','trust.nocollect':'通信なし・データ収集なし','trust.langs':'8 言語・システムに追従','trust.native':'軽量・ネイティブ',
       'feat.kicker':'できること','feat.h2':'ディスクを、<br>ひと巻きずつ理解する。','feat.lede':'許可したフォルダやドライブに DiskLite を向けるだけで、そっけないファイルサイズが、実際に読み取れる図になります。',
       'feat.1t':'サンバースト容量マップ','feat.1d':'何がディスクを占めているかをリングごとに表示。扇形をクリックしてそのフォルダに掘り下げ、ホバーでパスとサイズを確認。',
       'feat.2t':'種類別の内訳','feat.2d':'動画・画像・書類・アーカイブ・インストーラがそれぞれどれだけ容量を使っているか——ディスク全体をひと目で。',
-      'feat.3t':'大きなファイルと重複','feat.3d':'3 つのランキング——最大のファイル、バイト単位で一致する重複、残ったインストーラ——で何を減らせるかが分かります。',
-      'feat.4t':'読み取り専用で安全','feat.4d':'DiskLite は分析するだけ——削除も移動も一切しません。しかも、明示的に許可したフォルダしか読みません。',
+      'feat.3t':'大きなファイル・重複・古いファイル','feat.3d':'4 つのランキング——最大のファイル、バイト単位で一致する重複、残ったインストーラ、180 日以上使われていない大きなファイル——で何を減らせるかが分かります。',
+      'feat.4t':'クリーンアップはゴミ箱のみ','feat.4d':'アプリキャッシュ・ブラウザキャッシュ・ログ・開発者ジャンクを一掃し、アプリを残存ファイルごとアンインストールすることも。すべて確認のうえゴミ箱へ移動するだけなので、いつでも元に戻せます。',
       'feat.5t':'設計からプライバシー','feat.5d':'すべて Apple サンドボックス内で動作。アップロードも収集もなし——ファイルが Mac の外に出ることはありません。',
       'feat.6t':'ネイティブ・8 言語','feat.6d':'Apple Silicon 向けに SwiftUI で構築、リソースは軽く、システムに追従する 8 言語にローカライズ。',
       'visual.kicker':'サンバースト','visual.h2':'表ではなく、地図。','visual.lede':'フォルダのサイズは数字では実感しにくいもの。入れ子のリングにすれば、容量を食っている犯人は一瞬で分かります。',
@@ -488,23 +488,23 @@
       'priv.kicker':'設計からプライバシー','priv.h2':'ファイルは Mac の外に出ません。','priv.lede':'送る先のサーバーはありません——DiskLite はサーバーと一切通信しないからです。',
       'priv.1':'<b>100% ローカル。</b>スキャンはすべて自分の Mac 上で処理。ファイル・名前・パス・結果が送信されることはありません。',
       'priv.2':'<b>アカウント不要・通信なし。</b>DiskLite は完全オフラインで動作。ログインも追跡も分析 SDK もありません。',
-      'priv.3':'<b>許可はあなた、主導もあなた。</b>選んだフォルダだけを、読み取りのためだけに——変更は一切しません。',
-      'final.kicker':'容量を取り戻す','final.h2':'容量をはっきり見て——<br>まるごと自分のものに。','final.store_small':'近日公開','final.store_big':'Mac App Store','final.note':'macOS 13 (Ventura)+ · Apple Silicon · サンドボックス・読み取り専用',
+      'priv.3':'<b>許可はあなた、主導もあなた。</b>触れるのは許可されたフォルダだけ。クリーンアップも直接削除はせず、項目をゴミ箱に移動するだけです。',
+      'final.kicker':'容量を取り戻す','final.h2':'容量をはっきり見て——<br>まるごと自分のものに。','final.store_small':'近日公開','final.store_big':'Mac App Store','final.note':'macOS 13 (Ventura)+ · Apple Silicon · サンドボックス · ゴミ箱のみ',
       'foot.copy':'© 2026 许道斌 (Daobin Xu). All rights reserved.','foot.privacy':'プライバシーポリシー'
     },
     ko: {
       'nav.features':'기능','nav.visual':'시각화','nav.privacy':'개인정보',
-      'hero.eyebrow':'macOS · 샌드박스 · 읽기 전용',
+      'hero.eyebrow':'macOS · 샌드박스 · 100% 로컬',
       'hero.title':'당신의 공간은<br><em>어디로 갔을까?</em>',
-      'hero.lede':'macOS용 네이티브 디스크 공간 분석기. <b>선버스트 뷰</b>로 디스크를 채운 것을 파악하고, 큰 파일·중복·설치 파일까지. 읽기 전용, <b>100% 로컬</b>, 네트워크 없음, 계정 없음.',
+      'hero.lede':'macOS용 네이티브 디스크 분석·정리 도구. <b>선버스트 뷰</b>로 디스크를 채운 것을 파악하고, 큰 파일·중복·오래된 파일·정크까지. 정리는 항목을 <b>휴지통으로만 이동</b>하므로 언제든 복원 가능. <b>100% 로컬</b>, 네트워크 없음, 계정 없음.',
       'hero.store_small':'곧 출시','hero.store_big':'Mac App Store','hero.privacy':'개인정보 처리방침',
-      'hero.req':'<b>샌드박스 · 읽기 전용</b> · macOS 13+ · Apple Silicon · <b>8개 언어</b>',
-      'trust.sandbox':'샌드박스 · 읽기 전용','trust.nocollect':'네트워크 없음 · 데이터 수집 없음','trust.langs':'8개 언어 · 시스템 따름','trust.native':'가볍고 네이티브',
+      'hero.req':'<b>샌드박스 · 휴지통으로만 정리</b> · macOS 13+ · Apple Silicon · <b>8개 언어</b>',
+      'trust.sandbox':'샌드박스 · 휴지통으로만 정리','trust.nocollect':'네트워크 없음 · 데이터 수집 없음','trust.langs':'8개 언어 · 시스템 따름','trust.native':'가볍고 네이티브',
       'feat.kicker':'무엇을 하나','feat.h2':'디스크를 이해하세요,<br>한 고리씩.','feat.lede':'허용한 폴더나 드라이브에 DiskLite를 향하게 하면, 무미건조한 파일 크기가 실제로 읽을 수 있는 그림이 됩니다.',
       'feat.1t':'선버스트 공간 지도','feat.1d':'무엇이 디스크를 채우는지 고리별로 표시. 조각을 클릭해 폴더로 파고들고, 호버하면 경로와 크기가 보입니다.',
       'feat.2t':'유형별 분석','feat.2d':'동영상·이미지·문서·압축·설치 파일이 각각 얼마나 차지하는지——디스크 전체를 한눈에.',
-      'feat.3t':'큰 파일과 중복','feat.3d':'세 가지 순위——가장 큰 파일, 바이트 단위로 일치하는 중복, 남은 설치 파일——로 무엇을 정리할 수 있는지 정확히 알 수 있습니다.',
-      'feat.4t':'읽기 전용, 안전','feat.4d':'DiskLite는 분석만 합니다——무엇도 삭제하거나 옮기지 않습니다. 게다가 명시적으로 허용한 폴더만 읽습니다.',
+      'feat.3t':'큰 파일·중복·오래된 파일','feat.3d':'네 가지 순위——가장 큰 파일, 바이트 단위로 일치하는 중복, 남은 설치 파일, 180일 이상 사용하지 않은 큰 파일——로 무엇을 정리할 수 있는지 정확히 알 수 있습니다.',
+      'feat.4t':'정리는 휴지통으로만','feat.4d':'앱 캐시, 브라우저 캐시, 로그, 개발자 정크를 청소하고, 앱을 잔여 파일과 함께 제거할 수도 있습니다. 모든 작업은 확인 후 휴지통으로만 이동하므로 언제든 되돌릴 수 있습니다.',
       'feat.5t':'설계된 프라이버시','feat.5d':'모든 것이 Apple 샌드박스 안에서 실행됩니다. 업로드도 수집도 없이——파일은 Mac을 떠나지 않습니다.',
       'feat.6t':'네이티브 · 8개 언어','feat.6d':'Apple Silicon용으로 SwiftUI로 제작되어 가볍고, 시스템을 따르는 8개 언어로 현지화되었습니다.',
       'visual.kicker':'선버스트','visual.h2':'표가 아니라, 지도.','visual.lede':'폴더 크기는 숫자로는 체감하기 어렵습니다. 중첩된 고리로 보면 공간을 잡아먹는 범인이 한순간에 드러납니다.',
@@ -514,23 +514,23 @@
       'priv.kicker':'설계된 프라이버시','priv.h2':'파일은 Mac을 떠나지 않습니다.','priv.lede':'보낼 서버가 없습니다——DiskLite는 어떤 서버와도 통신하지 않으니까요.',
       'priv.1':'<b>100% 로컬.</b> 모든 스캔은 자신의 Mac에서 처리됩니다. 파일·이름·경로·결과가 업로드되는 일은 없습니다.',
       'priv.2':'<b>계정 없음, 네트워크 없음.</b> DiskLite는 완전히 오프라인으로 작동합니다. 로그인도, 추적도, 분석 SDK도 없습니다.',
-      'priv.3':'<b>허용도 당신, 통제도 당신.</b> 선택한 폴더만, 오직 읽기 위해서만——절대 바꾸지 않습니다.',
-      'final.kicker':'공간을 되찾으세요','final.h2':'공간을 또렷이 보고——<br>온전히 당신의 것으로.','final.store_small':'곧 출시','final.store_big':'Mac App Store','final.note':'macOS 13 (Ventura)+ · Apple Silicon · 샌드박스 · 읽기 전용',
+      'priv.3':'<b>허용도 당신, 통제도 당신.</b> 허용한 폴더만 다루며, 정리는 직접 삭제하지 않고 항목을 휴지통으로 옮길 뿐입니다.',
+      'final.kicker':'공간을 되찾으세요','final.h2':'공간을 또렷이 보고——<br>온전히 당신의 것으로.','final.store_small':'곧 출시','final.store_big':'Mac App Store','final.note':'macOS 13 (Ventura)+ · Apple Silicon · 샌드박스 · 휴지통으로만 정리',
       'foot.copy':'© 2026 许道斌 (Daobin Xu). All rights reserved.','foot.privacy':'개인정보 처리방침'
     },
     fr: {
       'nav.features':'Fonctions','nav.visual':'Visualiser','nav.privacy':'Confidentialité',
-      'hero.eyebrow':'macOS · Bac à sable · Lecture seule',
+      'hero.eyebrow':'macOS · Bac à sable · 100 % local',
       'hero.title':'Où est passé<br><em>votre espace ?</em>',
-      'hero.lede':"Un analyseur d'espace disque natif pour macOS. Une <b>vue en anneaux</b> de ce qui remplit votre disque — plus les gros fichiers, doublons et installeurs. Lecture seule, <b>100 % local</b>, sans réseau, sans compte.",
+      'hero.lede':"Un analyseur et nettoyeur de disque natif pour macOS. Une <b>vue en anneaux</b> de ce qui remplit votre disque — plus les gros fichiers, doublons, fichiers anciens et caches inutiles. Le nettoyage ne fait que déplacer les éléments <b>vers la corbeille</b>, toujours réversible. <b>100 % local</b>, sans réseau, sans compte.",
       'hero.store_small':'Bientôt sur le','hero.store_big':'Mac App Store','hero.privacy':'Confidentialité',
-      'hero.req':'<b>Bac à sable, lecture seule</b> · macOS 13+ · Apple Silicon · <b>8 langues</b>',
-      'trust.sandbox':'Bac à sable · lecture seule','trust.nocollect':'Sans réseau · aucune donnée collectée','trust.langs':'8 langues · suit le système','trust.native':'Léger et natif',
+      'hero.req':'<b>Bac à sable · nettoyage vers la corbeille uniquement</b> · macOS 13+ · Apple Silicon · <b>8 langues</b>',
+      'trust.sandbox':'Bac à sable · corbeille uniquement','trust.nocollect':'Sans réseau · aucune donnée collectée','trust.langs':'8 langues · suit le système','trust.native':'Léger et natif',
       'feat.kicker':'Ce qu’il fait','feat.h2':'Comprenez votre disque,<br>anneau après anneau.','feat.lede':"Pointez DiskLite vers n'importe quel dossier ou disque autorisé, et il transforme les tailles de fichiers en quelque chose de vraiment lisible.",
       'feat.1t':"Carte d'espace en anneaux",'feat.1d':'Une vue anneau par anneau de ce qui remplit votre disque. Cliquez sur une part pour entrer dans le dossier ; survolez pour voir chemin et taille.',
       'feat.2t':'Répartition par type','feat.2d':"Voyez l'espace pris par les vidéos, images, documents, archives et installeurs — tout le disque, d'un coup d'œil.",
-      'feat.3t':'Gros fichiers et doublons','feat.3d':'Trois classements — les plus gros fichiers, les doublons identiques octet par octet, et les installeurs oubliés — pour savoir exactement quoi récupérer.',
-      'feat.4t':'Lecture seule et sûr','feat.4d':'DiskLite se contente d’analyser — il ne supprime ni ne déplace jamais rien. Et il ne lit que les dossiers que vous autorisez explicitement.',
+      'feat.3t':'Gros fichiers, doublons et anciens','feat.3d':'Quatre classements — les plus gros fichiers, les doublons identiques octet par octet, les installeurs oubliés et les gros fichiers inutilisés depuis plus de 180 jours — pour savoir exactement quoi récupérer.',
+      'feat.4t':'Nettoie vers la corbeille, uniquement','feat.4d':'Balayez caches d'apps, caches de navigateur, journaux et fichiers de développement — désinstallez même des apps avec leurs restes. Tout part à la corbeille après votre confirmation, toujours réversible.',
       'feat.5t':'Confidentiel par conception','feat.5d':'Fonctionne entièrement dans le bac à sable Apple. Rien n’est envoyé, rien n’est collecté — vos fichiers ne quittent jamais votre Mac.',
       'feat.6t':'Natif et 8 langues','feat.6d':'Conçu avec SwiftUI pour Apple Silicon, léger en ressources, et traduit en 8 langues qui suivent votre système.',
       'visual.kicker':'Les anneaux','visual.h2':'Une carte, pas un tableur.','visual.lede':"Les tailles de dossiers sont difficiles à ressentir en chiffres. En anneaux imbriqués, le glouton d'espace saute aux yeux en une seconde.",
@@ -540,23 +540,23 @@
       'priv.kicker':'Confidentialité par conception','priv.h2':'Vos fichiers ne quittent jamais votre Mac.','priv.lede':"Aucun serveur où envoyer quoi que ce soit — car DiskLite n'en contacte jamais.",
       'priv.1':'<b>100 % local.</b> Chaque analyse est traitée sur votre propre Mac. Aucun fichier, nom, chemin ou résultat n’est envoyé.',
       'priv.2':'<b>Sans compte, sans réseau.</b> DiskLite fonctionne entièrement hors ligne. Pas de connexion, pas de suivi, pas de SDK d’analyse.',
-      'priv.3':'<b>Vous autorisez, vous contrôlez.</b> Il ne lit que les dossiers que vous choisissez, et seulement pour les lire — jamais pour les modifier.',
-      'final.kicker':'Récupérez votre disque','final.h2':'Voyez votre espace clairement —<br>et gardez-le entièrement.','final.store_small':'Bientôt sur le','final.store_big':'Mac App Store','final.note':'macOS 13 (Ventura)+ · Apple Silicon · Bac à sable, lecture seule',
+      'priv.3':'<b>Vous autorisez, vous contrôlez.</b> Il ne touche que les dossiers que vous autorisez — et le nettoyage ne supprime jamais directement : il déplace seulement vers la corbeille.',
+      'final.kicker':'Récupérez votre disque','final.h2':'Voyez votre espace clairement —<br>et gardez-le entièrement.','final.store_small':'Bientôt sur le','final.store_big':'Mac App Store','final.note':'macOS 13 (Ventura)+ · Apple Silicon · Bac à sable · corbeille uniquement',
       'foot.copy':'© 2026 许道斌 (Daobin Xu). Tous droits réservés.','foot.privacy':'Politique de confidentialité'
     },
     de: {
       'nav.features':'Funktionen','nav.visual':'Visualisieren','nav.privacy':'Datenschutz',
-      'hero.eyebrow':'macOS · Sandbox · Schreibgeschützt',
+      'hero.eyebrow':'macOS · Sandbox · 100 % lokal',
       'hero.title':'Wohin ist dein<br><em>Speicher hin?</em>',
-      'hero.lede':'Ein nativer Speicherplatz-Analyzer für macOS. Eine <b>Sunburst-Ansicht</b> dessen, was deine Festplatte füllt — plus große Dateien, Duplikate und Installer. Schreibgeschützt, <b>100 % lokal</b>, kein Netzwerk, kein Konto.',
+      'hero.lede':'Ein nativer Festplatten-Analyzer und -Cleaner für macOS. Eine <b>Sunburst-Ansicht</b> dessen, was deine Festplatte füllt — plus große Dateien, Duplikate, alte Dateien und Datenmüll. Bereinigen legt alles nur <b>in den Papierkorb</b>, jederzeit umkehrbar. <b>100 % lokal</b>, kein Netzwerk, kein Konto.',
       'hero.store_small':'Bald im','hero.store_big':'Mac App Store','hero.privacy':'Datenschutz',
-      'hero.req':'<b>Sandbox &amp; schreibgeschützt</b> · macOS 13+ · Apple Silicon · <b>8 Sprachen</b>',
-      'trust.sandbox':'Sandbox · schreibgeschützt','trust.nocollect':'Kein Netzwerk · keine Daten gesammelt','trust.langs':'8 Sprachen · folgt dem System','trust.native':'Leicht &amp; nativ',
+      'hero.req':'<b>Sandbox · Bereinigung nur in den Papierkorb</b> · macOS 13+ · Apple Silicon · <b>8 Sprachen</b>',
+      'trust.sandbox':'Sandbox · nur in den Papierkorb','trust.nocollect':'Kein Netzwerk · keine Daten gesammelt','trust.langs':'8 Sprachen · folgt dem System','trust.native':'Leicht &amp; nativ',
       'feat.kicker':'Was es macht','feat.h2':'Verstehe deine Festplatte,<br>Ring für Ring.','feat.lede':'Richte DiskLite auf einen beliebigen freigegebenen Ordner oder ein Laufwerk, und es macht aus nackten Dateigrößen etwas wirklich Lesbares.',
       'feat.1t':'Sunburst-Speicherkarte','feat.1d':'Eine Ansicht Ring für Ring, was deine Festplatte füllt. Klicke auf ein Segment, um in den Ordner zu gehen; beim Überfahren erscheinen Pfad und Größe.',
       'feat.2t':'Aufschlüsselung nach Typ','feat.2d':'Sieh, wie viel Platz Videos, Bilder, Dokumente, Archive und Installer je belegen — die ganze Festplatte auf einen Blick.',
-      'feat.3t':'Große Dateien &amp; Duplikate','feat.3d':'Drei Ranglisten — die größten Dateien, Byte-genaue Duplikate und übrig gebliebene Installer — damit du genau weißt, was frei wird.',
-      'feat.4t':'Schreibgeschützt &amp; sicher','feat.4d':'DiskLite analysiert nur — es löscht oder verschiebt nie etwas. Und es liest ausschließlich die Ordner, die du ausdrücklich freigibst.',
+      'feat.3t':'Große, doppelte &amp; alte Dateien','feat.3d':'Vier Ranglisten — die größten Dateien, Byte-genaue Duplikate, übrig gebliebene Installer und große Dateien, die seit über 180 Tagen unbenutzt sind — damit du genau weißt, was frei wird.',
+      'feat.4t':'Bereinigt nur in den Papierkorb','feat.4d':'Räume App-Caches, Browser-Caches, Protokolle und Entwickler-Datenmüll auf — und deinstalliere Apps samt Überresten. Alles wandert nach deiner Bestätigung in den Papierkorb, immer umkehrbar.',
       'feat.5t':'Datenschutz von Grund auf','feat.5d':'Läuft vollständig in der Apple-Sandbox. Nichts wird hochgeladen, nichts gesammelt — deine Dateien verlassen nie deinen Mac.',
       'feat.6t':'Nativ &amp; 8 Sprachen','feat.6d':'Mit SwiftUI für Apple Silicon gebaut, ressourcenschonend und in 8 Sprachen lokalisiert, die deinem System folgen.',
       'visual.kicker':'Der Sunburst','visual.h2':'Eine Karte, keine Tabelle.','visual.lede':'Ordnergrößen sind als Zahlen schwer zu fühlen. Als verschachtelte Ringe ist der Speicherfresser in einer Sekunde offensichtlich.',
@@ -566,23 +566,23 @@
       'priv.kicker':'Datenschutz von Grund auf','priv.h2':'Deine Dateien verlassen nie deinen Mac.','priv.lede':'Es gibt keinen Server, an den etwas ginge — denn DiskLite spricht mit keinem.',
       'priv.1':'<b>100 % lokal.</b> Jeder Scan wird auf deinem eigenen Mac verarbeitet. Keine Datei, kein Name, Pfad oder Ergebnis wird je hochgeladen.',
       'priv.2':'<b>Kein Konto, kein Netzwerk.</b> DiskLite arbeitet vollständig offline. Kein Login, kein Tracking, keine Analyse-SDKs.',
-      'priv.3':'<b>Du gibst frei, du bestimmst.</b> Es liest nur die Ordner, die du wählst, und nur lesend — niemals verändernd.',
-      'final.kicker':'Hol dir Speicher zurück','final.h2':'Sieh deinen Speicher klar —<br>und behalte ihn ganz für dich.','final.store_small':'Bald im','final.store_big':'Mac App Store','final.note':'macOS 13 (Ventura)+ · Apple Silicon · Sandbox &amp; schreibgeschützt',
+      'priv.3':'<b>Du gibst frei, du bestimmst.</b> Es berührt nur die Ordner, die du freigibst — und Bereinigen löscht nie direkt, sondern legt Elemente nur in den Papierkorb.',
+      'final.kicker':'Hol dir Speicher zurück','final.h2':'Sieh deinen Speicher klar —<br>und behalte ihn ganz für dich.','final.store_small':'Bald im','final.store_big':'Mac App Store','final.note':'macOS 13 (Ventura)+ · Apple Silicon · Sandbox · nur in den Papierkorb',
       'foot.copy':'© 2026 许道斌 (Daobin Xu). Alle Rechte vorbehalten.','foot.privacy':'Datenschutzrichtlinie'
     },
     es: {
       'nav.features':'Funciones','nav.visual':'Visualizar','nav.privacy':'Privacidad',
-      'hero.eyebrow':'macOS · Sandbox · Solo lectura',
+      'hero.eyebrow':'macOS · Sandbox · 100 % local',
       'hero.title':'¿A dónde fue<br><em>tu espacio?</em>',
-      'hero.lede':'Un analizador de espacio en disco nativo para macOS. Una <b>vista de anillos</b> de lo que llena tu disco — además de archivos grandes, duplicados e instaladores. Solo lectura, <b>100 % local</b>, sin red, sin cuenta.',
+      'hero.lede':'Un analizador y limpiador de disco nativo para macOS. Una <b>vista de anillos</b> de lo que llena tu disco — además de archivos grandes, duplicados, antiguos y caché basura. La limpieza solo mueve elementos <b>a la Papelera</b>, siempre reversible. <b>100 % local</b>, sin red, sin cuenta.',
       'hero.store_small':'Muy pronto en la','hero.store_big':'Mac App Store','hero.privacy':'Privacidad',
-      'hero.req':'<b>Sandbox y solo lectura</b> · macOS 13+ · Apple Silicon · <b>8 idiomas</b>',
-      'trust.sandbox':'Sandbox · solo lectura','trust.nocollect':'Sin red · sin datos recogidos','trust.langs':'8 idiomas · sigue al sistema','trust.native':'Ligero y nativo',
+      'hero.req':'<b>Sandbox · limpieza solo a la Papelera</b> · macOS 13+ · Apple Silicon · <b>8 idiomas</b>',
+      'trust.sandbox':'Sandbox · solo a la Papelera','trust.nocollect':'Sin red · sin datos recogidos','trust.langs':'8 idiomas · sigue al sistema','trust.native':'Ligero y nativo',
       'feat.kicker':'Qué hace','feat.h2':'Entiende tu disco,<br>anillo a anillo.','feat.lede':'Apunta DiskLite a cualquier carpeta o disco que autorices, y convierte los tamaños de archivo en algo que de verdad puedes leer.',
       'feat.1t':'Mapa de espacio en anillos','feat.1d':'Una vista anillo por anillo de lo que llena tu disco. Haz clic en un sector para entrar en la carpeta; pasa el cursor para ver su ruta y tamaño.',
       'feat.2t':'Desglose por tipo','feat.2d':'Mira cuánto espacio ocupan vídeos, imágenes, documentos, archivos comprimidos e instaladores — todo el disco, de un vistazo.',
-      'feat.3t':'Archivos grandes y duplicados','feat.3d':'Tres listas ordenadas — los archivos más grandes, los duplicados idénticos byte a byte y los instaladores olvidados — para saber exactamente qué recuperar.',
-      'feat.4t':'Solo lectura y seguro','feat.4d':'DiskLite solo analiza — nunca borra ni mueve nada. Y solo lee las carpetas que autorizas explícitamente.',
+      'feat.3t':'Archivos grandes, duplicados y antiguos','feat.3d':'Cuatro listas ordenadas — los archivos más grandes, duplicados idénticos byte a byte, instaladores olvidados y archivos grandes sin usar durante más de 180 días — para saber exactamente qué recuperar.',
+      'feat.4t':'Limpia solo a la Papelera','feat.4d':'Barre cachés de apps, cachés del navegador, registros y basura de desarrollador — e incluso desinstala apps con sus restos. Todo va a la Papelera con tu confirmación, siempre reversible.',
       'feat.5t':'Privado por diseño','feat.5d':'Funciona por completo dentro del sandbox de Apple. Nada se sube, nada se recoge — tus archivos nunca salen de tu Mac.',
       'feat.6t':'Nativo y 8 idiomas','feat.6d':'Creado con SwiftUI para Apple Silicon, ligero en recursos y traducido a 8 idiomas que siguen a tu sistema.',
       'visual.kicker':'El sunburst','visual.h2':'Un mapa, no una hoja de cálculo.','visual.lede':'Los tamaños de carpeta son difíciles de sentir como cifras. Como anillos anidados, el devorador de espacio salta a la vista en un segundo.',
@@ -592,23 +592,23 @@
       'priv.kicker':'Privacidad por diseño','priv.h2':'Tus archivos nunca salen de tu Mac.','priv.lede':'No hay servidor al que enviar nada — porque DiskLite nunca habla con ninguno.',
       'priv.1':'<b>100 % local.</b> Cada análisis se procesa en tu propio Mac. Ningún archivo, nombre, ruta o resultado se sube jamás.',
       'priv.2':'<b>Sin cuenta, sin red.</b> DiskLite funciona totalmente sin conexión. Sin inicio de sesión, sin rastreo, sin SDK de analítica.',
-      'priv.3':'<b>Tú autorizas, tú controlas.</b> Solo lee las carpetas que eliges, y solo para leerlas — nunca para cambiarlas.',
-      'final.kicker':'Recupera tu disco','final.h2':'Ve tu espacio con claridad —<br>y consérvalo enteramente tuyo.','final.store_small':'Muy pronto en la','final.store_big':'Mac App Store','final.note':'macOS 13 (Ventura)+ · Apple Silicon · Sandbox y solo lectura',
+      'priv.3':'<b>Tú autorizas, tú controlas.</b> Solo toca las carpetas que autorizas — y la limpieza nunca borra directamente: solo mueve elementos a la Papelera.',
+      'final.kicker':'Recupera tu disco','final.h2':'Ve tu espacio con claridad —<br>y consérvalo enteramente tuyo.','final.store_small':'Muy pronto en la','final.store_big':'Mac App Store','final.note':'macOS 13 (Ventura)+ · Apple Silicon · Sandbox · limpieza solo a la Papelera',
       'foot.copy':'© 2026 许道斌 (Daobin Xu). Todos los derechos reservados.','foot.privacy':'Política de privacidad'
     },
     pt: {
       'nav.features':'Recursos','nav.visual':'Visualizar','nav.privacy':'Privacidade',
-      'hero.eyebrow':'macOS · Sandbox · Somente leitura',
+      'hero.eyebrow':'macOS · Sandbox · 100% local',
       'hero.title':'Para onde foi<br><em>o seu espaço?</em>',
-      'hero.lede':'Um analisador de espaço em disco nativo para macOS. Uma <b>visão em anéis</b> do que enche o seu disco — além de arquivos grandes, duplicados e instaladores. Somente leitura, <b>100% local</b>, sem rede, sem conta.',
+      'hero.lede':'Um analisador e limpador de disco nativo para macOS. Uma <b>visão em anéis</b> do que enche o seu disco — além de arquivos grandes, duplicados, antigos e caches inúteis. A limpeza apenas move itens <b>para o Lixo</b>, sempre reversível. <b>100% local</b>, sem rede, sem conta.',
       'hero.store_small':'Em breve na','hero.store_big':'Mac App Store','hero.privacy':'Privacidade',
-      'hero.req':'<b>Sandbox e somente leitura</b> · macOS 13+ · Apple Silicon · <b>8 idiomas</b>',
-      'trust.sandbox':'Sandbox · somente leitura','trust.nocollect':'Sem rede · nenhum dado coletado','trust.langs':'8 idiomas · segue o sistema','trust.native':'Leve e nativo',
+      'hero.req':'<b>Sandbox · limpeza só para o Lixo</b> · macOS 13+ · Apple Silicon · <b>8 idiomas</b>',
+      'trust.sandbox':'Sandbox · só para o Lixo','trust.nocollect':'Sem rede · nenhum dado coletado','trust.langs':'8 idiomas · segue o sistema','trust.native':'Leve e nativo',
       'feat.kicker':'O que faz','feat.h2':'Entenda o seu disco,<br>anel por anel.','feat.lede':'Aponte o DiskLite para qualquer pasta ou disco que você autorizar, e ele transforma tamanhos de arquivo em algo que você realmente consegue ler.',
       'feat.1t':'Mapa de espaço em anéis','feat.1d':'Uma visão anel a anel do que enche o seu disco. Clique em uma fatia para entrar na pasta; passe o mouse para ver o caminho e o tamanho.',
       'feat.2t':'Divisão por tipo','feat.2d':'Veja quanto espaço vídeos, imagens, documentos, arquivos compactados e instaladores ocupam cada um — o disco todo, num relance.',
-      'feat.3t':'Arquivos grandes e duplicados','feat.3d':'Três listas ordenadas — os maiores arquivos, duplicados idênticos byte a byte e instaladores esquecidos — para você saber exatamente o que dá para recuperar.',
-      'feat.4t':'Somente leitura e seguro','feat.4d':'O DiskLite apenas analisa — nunca apaga nem move nada. E só lê as pastas que você autoriza explicitamente.',
+      'feat.3t':'Arquivos grandes, duplicados e antigos','feat.3d':'Quatro listas ordenadas — os maiores arquivos, duplicados idênticos byte a byte, instaladores esquecidos e arquivos grandes sem uso há mais de 180 dias — para você saber exatamente o que dá para recuperar.',
+      'feat.4t':'Limpa só para o Lixo','feat.4d':'Varra caches de apps, caches do navegador, registros e lixo de desenvolvedor — e até desinstale apps junto com seus restos. Tudo vai para o Lixo com a sua confirmação, sempre reversível.',
       'feat.5t':'Privado por design','feat.5d':'Roda inteiramente dentro do sandbox da Apple. Nada é enviado, nada é coletado — seus arquivos nunca saem do seu Mac.',
       'feat.6t':'Nativo e 8 idiomas','feat.6d':'Feito com SwiftUI para Apple Silicon, leve em recursos e localizado em 8 idiomas que seguem o seu sistema.',
       'visual.kicker':'O sunburst','visual.h2':'Um mapa, não uma planilha.','visual.lede':'Tamanhos de pasta são difíceis de sentir como números. Como anéis aninhados, o devorador de espaço fica óbvio num segundo.',
@@ -618,8 +618,8 @@
       'priv.kicker':'Privacidade por design','priv.h2':'Seus arquivos nunca saem do seu Mac.','priv.lede':'Não há servidor para onde enviar nada — porque o DiskLite nunca fala com nenhum.',
       'priv.1':'<b>100% local.</b> Cada varredura é processada no seu próprio Mac. Nenhum arquivo, nome, caminho ou resultado é enviado.',
       'priv.2':'<b>Sem conta, sem rede.</b> O DiskLite funciona totalmente offline. Sem login, sem rastreamento, sem SDKs de análise.',
-      'priv.3':'<b>Você autoriza, você controla.</b> Ele lê apenas as pastas que você escolhe, e só para ler — nunca para alterá-las.',
-      'final.kicker':'Recupere o seu disco','final.h2':'Veja o seu espaço com clareza —<br>e mantenha-o inteiramente seu.','final.store_small':'Em breve na','final.store_big':'Mac App Store','final.note':'macOS 13 (Ventura)+ · Apple Silicon · Sandbox e somente leitura',
+      'priv.3':'<b>Você autoriza, você controla.</b> Ele só toca nas pastas que você autoriza — e a limpeza nunca apaga diretamente: apenas move itens para o Lixo.',
+      'final.kicker':'Recupere o seu disco','final.h2':'Veja o seu espaço com clareza —<br>e mantenha-o inteiramente seu.','final.store_small':'Em breve na','final.store_big':'Mac App Store','final.note':'macOS 13 (Ventura)+ · Apple Silicon · Sandbox · limpeza só para o Lixo',
       'foot.copy':'© 2026 许道斌 (Daobin Xu). Todos os direitos reservados.','foot.privacy':'Política de privacidade'
     }
   };
