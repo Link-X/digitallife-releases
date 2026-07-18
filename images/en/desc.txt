@@ -1,0 +1,13 @@
+⭐ Track your Mac's activity — 100% local, no cloud, no account.
+
+
+DigitalLife is a native macOS menu-bar app that quietly records what happens on your Mac day to day — and keeps every byte of it on your own machine.
+
+ It tracks which apps you use and for how long, battery and power consumption (with a per-app energy ranking), network traffic per app, file activity (created, deleted and modified files, grouped by directory, type and originating app), CPU and memory top lists, window titles and idle time, background-resident apps, and your full app install/uninstall history. It also scans disk space to locate large folders and files, and helps you clean up junk.
+
+ Everything is presented through a polished native interface as clear daily, weekly and monthly reports, with screen-time comparisons against previous periods. You can clear data by day or category, and export it to JSON or CSV.
+
+ No cloud. No account. Nothing uploaded — all your data stays on your Mac.
+
+
+

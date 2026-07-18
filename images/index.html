@@ -9,238 +9,165 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Digital Life — track everything, upload nothing">
 <meta property="og:description" content="A native macOS activity monitor. 100% local, no cloud, no account.">
-<meta property="og:image" content="https://link-x.github.io/digitallife-releases/images/en/DigitalLife-feature-1024x500.png">
+<meta property="og:image" content="https://gitee.com/xudaobin/digitallife-releases/images/en/DigitalLife-feature-1024x500.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper:    #f4f7fc;   /* 冷白微蓝底 */
-    --paper-2:  #e9eff9;   /* 浅蓝面板 */
-    --paper-3:  #dce6f5;   /* 深一档面板 */
-    --ink:      #0e1a2b;   /* 深蓝黑 */
-    --ink-soft: #566274;   /* 蓝灰次级 */
-    --moss:     #2f6bff;   /* 主科技蓝 */
-    --moss-deep:#1b50d6;   /* 深蓝 */
-    --moss-tint:#e4ecff;   /* 蓝浅底 */
-    --ochre:    #12b5c9;   /* 青色提亮 */
-    --ochre-tint:#dcf4f7;
-    --navy:     #0f2352;   /* 深宝蓝(隐私区) */
-    --cream:    #ffffff;
-    --line:     rgba(14,26,43,.12);
-    --line-soft:rgba(14,26,43,.07);
-    --shadow:   30px 40px 80px -40px rgba(20,40,90,.42);
+    --ink: #0a1826;
+    --ink-2: #06111d;
+    --paper: #f4f1e9;
+    --paper-soft: #ece7db;
+    --text: #14202b;
+    --text-soft: #4b5a67;
+    --wave: #37c6c0;
+    --wave-deep: #1f9d9a;
+    --sky: #6fd0e6;
+    --line: rgba(20,32,43,.10);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
     background: var(--paper);
-    color: var(--ink);
+    color: var(--text);
     font-family: "Instrument Sans", -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans", "Microsoft YaHei", sans-serif;
-    line-height: 1.65;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
   a { color: inherit; text-decoration: none; }
-  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 30px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
   .serif { font-family: "Fraunces", Georgia, serif; }
-  em.ink { font-style: italic; color: var(--moss); }
 
-  /* soft paper grain overlay */
-  body::before {
-    content: ""; position: fixed; inset: 0; z-index: 9999; pointer-events: none;
-    opacity: .04; mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  /* ============ reveal on scroll ============ */
-  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
-  .reveal.in { opacity: 1; transform: none; }
-  .reveal.d1 { transition-delay: .05s; } .reveal.d2 { transition-delay: .13s; }
-  .reveal.d3 { transition-delay: .21s; } .reveal.d4 { transition-delay: .29s; } .reveal.d5 { transition-delay: .38s; }
-  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
-
-  @keyframes bob { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-14px) rotate(1deg); } }
-  @keyframes ripple { 0% { transform: scale(.6); opacity: .5; } 100% { transform: scale(1.5); opacity: 0; } }
-  @keyframes drift { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-18px); } }
-
-  /* ============ NAV ============ */
-  header { position: relative; }
-  nav.bar { display: flex; align-items: center; justify-content: space-between; padding: 24px 0; position: relative; z-index: 5; }
-  .brand { display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 18px; letter-spacing: -.01em; }
-  .brand .mark {
-    width: 40px; height: 40px; border-radius: 11px; display: block;
-    box-shadow: 0 8px 20px -6px rgba(27,80,214,.45);
-  }
-  .nav-right { display: flex; align-items: center; gap: 26px; }
-  nav .links { display: flex; gap: 28px; font-size: 15px; color: var(--ink-soft); font-weight: 500; }
-  nav .links a { position: relative; transition: color .2s; }
-  nav .links a:hover { color: var(--moss-deep); }
-  .lang-select {
-    font: 600 13.5px "Instrument Sans", sans-serif;
-    color: var(--ink); background-color: rgba(255,255,255,.6);
-    border: 1px solid var(--line); border-radius: 100px;
-    padding: 8px 32px 8px 15px; cursor: pointer;
-    appearance: none; -webkit-appearance: none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235f6653' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>");
-    background-repeat: no-repeat; background-position: right 13px center;
-    transition: border-color .2s, background-color .2s;
-  }
-  .lang-select:hover { border-color: var(--moss); background-color: #fff; }
+  @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+  .reveal { opacity: 0; animation: rise .9s cubic-bezier(.2,.7,.2,1) forwards; }
+  .d1 { animation-delay: .05s; } .d2 { animation-delay: .15s; }
+  .d3 { animation-delay: .25s; } .d4 { animation-delay: .35s; } .d5 { animation-delay: .5s; }
 
   /* ============ HERO ============ */
-  .hero { position: relative; overflow: hidden; padding-bottom: 40px; }
-  .hero .blob { position: absolute; border-radius: 50%; filter: blur(10px); pointer-events: none; z-index: 0; }
-  .hero .b1 { width: 620px; height: 620px; top: -260px; right: -180px; background: radial-gradient(circle, rgba(47,107,255,.28), transparent 62%); }
-  .hero .b2 { width: 480px; height: 480px; top: 120px; left: -220px; background: radial-gradient(circle, rgba(18,181,201,.20), transparent 62%); }
-  .hero .b3 { width: 360px; height: 360px; bottom: -180px; right: 20%; background: radial-gradient(circle, rgba(91,139,255,.16), transparent 62%); }
-  /* 科技网点(增强科技感,仅 hero) */
-  .hero::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-    background-image: radial-gradient(rgba(47,107,255,.07) 1px, transparent 1px); background-size: 26px 26px;
-    -webkit-mask-image: radial-gradient(120% 82% at 72% 8%, #000, transparent 68%);
-            mask-image: radial-gradient(120% 82% at 72% 8%, #000, transparent 68%); }
+  .hero {
+    position: relative;
+    background:
+      radial-gradient(120% 90% at 80% -10%, rgba(55,198,192,.22), transparent 55%),
+      radial-gradient(90% 80% at 10% 10%, rgba(111,208,230,.14), transparent 50%),
+      linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
+    color: #eaf3f4;
+    padding: 26px 0 0;
+    overflow: hidden;
+  }
+  nav { display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 3; }
+  .brand { display: flex; align-items: center; gap: 11px; font-weight: 600; letter-spacing: -.01em; }
+  .brand .mark {
+    width: 30px; height: 30px; border-radius: 9px;
+    background: linear-gradient(150deg, var(--sky), var(--wave-deep));
+    display: grid; place-items: center; box-shadow: 0 6px 18px rgba(31,157,154,.4);
+  }
+  .brand .mark svg { width: 18px; height: 18px; }
+  .nav-right { display: flex; align-items: center; gap: 24px; }
+  nav .links { display: flex; gap: 26px; font-size: 14.5px; color: #a9c2c6; }
+  nav .links a:hover { color: #fff; }
+  .lang-select {
+    font: 600 13.5px "Instrument Sans", sans-serif;
+    color: #cfe2e5; background-color: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.18); border-radius: 100px;
+    padding: 7px 32px 7px 14px; cursor: pointer;
+    appearance: none; -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23cfe2e5' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>");
+    background-repeat: no-repeat; background-position: right 12px center;
+    transition: border-color .2s;
+  }
+  .lang-select:hover { border-color: rgba(255,255,255,.5); }
+  .lang-select option { color: #14202b; background: #fff; }
 
-  .hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1.06fr; gap: 46px; align-items: center; padding: 40px 0 70px; }
+  .hero-inner { position: relative; z-index: 2; padding: 54px 0 96px; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1.12fr; gap: 54px; align-items: center; }
   .eyebrow {
-    display: inline-flex; align-items: center; gap: 9px;
-    font-size: 12.5px; letter-spacing: .13em; text-transform: uppercase; font-weight: 600;
-    color: var(--moss-deep); background: var(--moss-tint);
-    border: 1px solid rgba(47,107,255,.22);
-    padding: 7px 15px; border-radius: 100px; margin-bottom: 26px;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--wave); border: 1px solid rgba(55,198,192,.35);
+    padding: 6px 14px; border-radius: 100px; margin-bottom: 26px;
+    background: rgba(55,198,192,.06);
   }
-  .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--moss); box-shadow: 0 0 0 4px rgba(47,107,255,.16); }
-  h1.hero-title { font-weight: 500; font-size: clamp(42px, 5.6vw, 70px); line-height: 1.02; letter-spacing: -.03em; margin-bottom: 24px; }
-  .lede { font-size: clamp(17px, 1.4vw, 20px); color: var(--ink-soft); max-width: 500px; margin: 0 0 36px; }
-  .lede b { color: var(--ink); font-weight: 600; }
-  .cta { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 11px; font-weight: 600; font-size: 16px;
-    padding: 16px 30px; border-radius: 100px; color: var(--cream);
-    background: linear-gradient(150deg, #4f83ff, var(--moss-deep));
-    box-shadow: 0 14px 30px -10px rgba(27,80,214,.55);
-    transition: transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s;
-  }
-  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -12px rgba(27,80,214,.65); }
-  .btn-arrow { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 16px; color: var(--moss-deep); }
-  .btn-arrow .a { transition: transform .25s; }
-  .btn-arrow:hover .a { transform: translateX(5px); }
-  .req { margin-top: 24px; font-size: 14px; color: var(--ink-soft); }
-  .req b { color: var(--moss-deep); font-weight: 600; }
+  .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--wave); box-shadow: 0 0 10px var(--wave); }
+  h1.hero-title { font-weight: 500; font-size: clamp(38px, 5.2vw, 62px); line-height: 1.05; letter-spacing: -.025em; margin-bottom: 22px; }
+  h1.hero-title em { font-style: italic; color: var(--wave); }
+  .lede { font-size: clamp(16.5px, 1.4vw, 19px); color: #b8ccd0; max-width: 470px; margin: 0 0 34px; }
+  .lede b { color: #dcebec; font-weight: 600; }
+  .cta { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 16px; padding: 15px 28px; border-radius: 14px; transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s, border-color .25s; }
+  .btn-primary { background: linear-gradient(150deg, var(--sky), var(--wave-deep)); color: #04241f; box-shadow: 0 10px 30px rgba(31,157,154,.45); }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(31,157,154,.6); }
+  .btn-ghost { color: #cfe2e5; border: 1px solid rgba(255,255,255,.18); }
+  .btn-ghost:hover { border-color: rgba(255,255,255,.5); transform: translateY(-3px); }
+  .req { margin-top: 20px; font-size: 13.5px; color: #7f9aa0; }
+  .req b { color: #bcd2d6; font-weight: 500; }
 
-  /* hero figure: dolphin + floating app card */
-  .hero-figure { position: relative; z-index: 2; min-height: 440px; }
-  .app-card {
-    position: relative; border-radius: 20px; overflow: hidden; background: #fff;
-    border: 1px solid var(--line); box-shadow: var(--shadow);
-    transform: rotate(1.4deg); animation: drift 9s ease-in-out infinite;
-  }
-  .app-card .chrome { display: flex; gap: 7px; padding: 13px 16px; background: var(--paper-2); border-bottom: 1px solid var(--line-soft); }
-  .app-card .chrome i { width: 11px; height: 11px; border-radius: 50%; }
-  .app-card .chrome i:nth-child(1){ background:#e6a04a; } .app-card .chrome i:nth-child(2){ background:#d9c65a; } .app-card .chrome i:nth-child(3){ background:#7bb87f; }
-  .app-card img { width: 100%; display: block; }
-  .dolphin-hero {
-    position: absolute; width: 116px; height: 116px; left: -46px; bottom: -40px; z-index: 3;
-    display: block; border-radius: 26px;
-    filter: drop-shadow(0 26px 40px rgba(27,80,214,.5));
-    animation: drift 6s ease-in-out infinite;
-  }
-  .spark { position: absolute; z-index: 4; color: var(--ochre); animation: drift 5s ease-in-out infinite; }
-  .spark.s1 { top: 6%; right: 12%; width: 26px; } .spark.s2 { top: 40%; right: -14px; width: 18px; animation-delay: 1.2s; }
-  .spark.s3 { bottom: 12%; right: 22%; width: 20px; animation-delay: .6s; }
+  .hero-figure { position: relative; z-index: 2; }
+  .hero-figure img { width: 100%; border-radius: 14px; display: block; border: 1px solid rgba(255,255,255,.1); box-shadow: 0 44px 90px -26px rgba(0,0,0,.72), 0 0 0 1px rgba(0,0,0,.35); }
 
   /* ============ TRUST BAR ============ */
-  .trust { padding: 8px 0 12px; }
-  .trust .wrap { display: flex; flex-wrap: wrap; gap: 12px 14px; justify-content: center; }
-  .pill { display: inline-flex; align-items: center; gap: 9px; padding: 10px 18px; border-radius: 100px;
-    background: #fff; border: 1px solid var(--line); color: var(--ink); font-size: 14.5px; font-weight: 500;
-    box-shadow: 0 6px 16px -12px rgba(20,40,90,.4); }
-  .pill svg { width: 18px; height: 18px; color: var(--moss); flex: 0 0 auto; }
+  .trust { background: var(--ink-2); padding: 46px 0 34px; }
+  .trust .wrap { display: flex; flex-wrap: wrap; gap: 14px 40px; justify-content: center; }
+  .trust .item { display: flex; align-items: center; gap: 9px; color: #9fb6ba; font-size: 14.5px; font-weight: 500; }
+  .trust .item svg { width: 17px; height: 17px; color: var(--wave); flex: 0 0 auto; }
 
   /* ============ SECTIONS ============ */
-  section.block { padding: 108px 0; position: relative; }
-  .kicker { display: inline-flex; align-items: center; gap: 8px; color: var(--moss-deep); font-weight: 600; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 16px; }
-  .kicker::before { content: ""; width: 22px; height: 2px; border-radius: 2px; background: var(--ochre); }
-  h2 { font-weight: 500; font-size: clamp(32px, 4.4vw, 50px); letter-spacing: -.025em; line-height: 1.06; margin-bottom: 20px; }
-  .section-lede { color: var(--ink-soft); font-size: 18px; max-width: 580px; }
-  .center { text-align: center; } .center .section-lede { margin: 0 auto; } .center .kicker { justify-content: center; }
+  section.block { padding: 100px 0; }
+  .kicker { color: var(--wave-deep); font-weight: 600; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px; }
+  h2 { font-weight: 500; font-size: clamp(30px, 4.5vw, 46px); letter-spacing: -.02em; line-height: 1.08; margin-bottom: 18px; }
+  .section-lede { color: var(--text-soft); font-size: 18px; max-width: 560px; }
+  .center { text-align: center; } .center .section-lede { margin: 0 auto; }
 
-  /* features bento */
-  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 58px; }
-  .card { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 32px 28px; overflow: hidden;
-    transition: transform .32s cubic-bezier(.2,.7,.2,1), box-shadow .32s, border-color .32s; }
-  .card:hover { transform: translateY(-6px); box-shadow: 0 30px 50px -30px rgba(20,40,90,.4); border-color: rgba(47,107,255,.3); }
-  .card .ic { width: 52px; height: 52px; border-radius: 15px; display: grid; place-items: center; margin-bottom: 22px;
-    background: var(--moss-tint); color: var(--moss-deep); border: 1px solid rgba(47,107,255,.18); }
-  .card .ic svg { width: 26px; height: 26px; }
-  .card h3 { font-size: 20px; font-weight: 600; letter-spacing: -.015em; margin-bottom: 9px; }
-  .card p { color: var(--ink-soft); font-size: 15.5px; }
-  .card.warm .ic { background: var(--ochre-tint); color: var(--ochre); border-color: rgba(18,181,201,.28); }
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 30px 26px; transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s; }
+  .card:hover { transform: translateY(-5px); box-shadow: 0 24px 50px -24px rgba(20,32,43,.28); }
+  .card .ic { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 20px; background: linear-gradient(150deg, rgba(111,208,230,.2), rgba(55,198,192,.14)); color: var(--wave-deep); }
+  .card .ic svg { width: 24px; height: 24px; }
+  .card h3 { font-size: 19px; font-weight: 600; letter-spacing: -.01em; margin-bottom: 8px; }
+  .card p { color: var(--text-soft); font-size: 15px; }
 
-  /* screens */
-  .screens { background: var(--paper-2); }
-  .screens::after { content: ""; position: absolute; inset: 0; pointer-events: none;
-    background: radial-gradient(80% 50% at 50% 0%, rgba(47,107,255,.12), transparent 60%); }
-  .gallery { display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; margin-top: 60px; }
-  figure.shot { grid-column: span 2; border-radius: 18px; overflow: hidden; background: #fff; border: 1px solid var(--line);
-    box-shadow: 0 24px 46px -30px rgba(20,40,90,.48); transition: transform .32s cubic-bezier(.2,.7,.2,1), box-shadow .32s; }
-  figure.shot:hover { transform: translateY(-6px); box-shadow: 0 34px 60px -32px rgba(20,40,90,.55); }
-  figure.shot.wide { grid-column: span 3; }
-  figure.shot .win { display: flex; gap: 6px; padding: 11px 14px; background: var(--paper-2); border-bottom: 1px solid var(--line-soft); }
-  figure.shot .win i { width: 9px; height: 9px; border-radius: 50%; }
-  figure.shot .win i:nth-child(1){ background:#e6a04a; } figure.shot .win i:nth-child(2){ background:#d9c65a; } figure.shot .win i:nth-child(3){ background:#7bb87f; }
-  figure.shot img { width: 100%; display: block; }
-  figure.shot figcaption { padding: 15px 18px; font-size: 14.5px; color: var(--ink-soft); font-weight: 500; border-top: 1px solid var(--line-soft); }
+  .screens { background: var(--paper-soft); }
+  .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 54px; }
+  .gallery figure { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: #fff; box-shadow: 0 18px 40px -26px rgba(20,32,43,.35); transition: transform .3s; }
+  .gallery figure:hover { transform: translateY(-4px); }
+  .gallery img { width: 100%; display: block; }
+  .gallery figcaption { padding: 14px 18px; font-size: 14px; color: var(--text-soft); font-weight: 500; border-top: 1px solid var(--line); }
 
-  /* privacy */
-  .privacy { background: var(--navy); color: #e6edfb; position: relative; overflow: hidden; }
-  .privacy::before { content: ""; position: absolute; top: -30%; right: -12%; width: 60%; height: 160%;
-    background: radial-gradient(circle, rgba(91,139,255,.24), transparent 62%); pointer-events: none; }
-  .privacy::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
-    background-image: radial-gradient(rgba(120,160,255,.10) 1px, transparent 1px); background-size: 28px 28px;
-    -webkit-mask-image: radial-gradient(90% 70% at 78% 40%, #000, transparent 72%); mask-image: radial-gradient(90% 70% at 78% 40%, #000, transparent 72%); }
-  .privacy .grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
-  .privacy .kicker { color: #a9c4ff; } .privacy .kicker::before { background: #4fd6e6; }
+  .privacy { background: var(--ink); color: #dcebec; position: relative; overflow: hidden; }
+  .privacy::before { content: ""; position: absolute; top: -30%; right: -10%; width: 60%; height: 160%; background: radial-gradient(circle, rgba(55,198,192,.18), transparent 60%); pointer-events: none; }
+  .privacy .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
   .privacy h2 { color: #fff; }
-  .privacy .section-lede { color: #b9c8e6; }
-  .privacy ul { list-style: none; margin-top: 32px; display: grid; gap: 20px; }
-  .privacy li { display: flex; gap: 15px; align-items: flex-start; }
-  .privacy li .ck { width: 26px; height: 26px; border-radius: 8px; background: rgba(255,255,255,.12); display: grid; place-items: center; flex: 0 0 auto; margin-top: 1px; }
-  .privacy li .ck svg { width: 16px; height: 16px; color: #cfe0ff; }
-  .privacy li b { color: #fff; font-weight: 600; }
-  .privacy li span { color: #b9c8e6; font-size: 15.5px; }
-  .guard { position: relative; aspect-ratio: 1; display: grid; place-items: center; }
-  .guard .dolphin-guard { width: 52%; border-radius: 24px; filter: drop-shadow(0 22px 44px rgba(8,20,52,.55)) drop-shadow(0 0 46px rgba(91,139,255,.45)); animation: drift 7s ease-in-out infinite; }
-  .guard .ring { position: absolute; width: 66%; height: 66%; border-radius: 50%; border: 1.5px solid rgba(180,205,255,.4); animation: ripple 4s ease-out infinite; }
-  .guard .ring.r2 { animation-delay: 2s; }
+  .privacy .section-lede { color: #9db6ba; }
+  .privacy ul { list-style: none; margin-top: 30px; display: grid; gap: 18px; }
+  .privacy li { display: flex; gap: 14px; align-items: flex-start; }
+  .privacy li svg { width: 22px; height: 22px; color: var(--wave); flex: 0 0 auto; margin-top: 2px; }
+  .privacy li b { color: #eaf6f6; font-weight: 600; }
+  .privacy li span { color: #9db6ba; font-size: 15.5px; }
+  .lock-badge { aspect-ratio: 1; border-radius: 28px; display: grid; place-items: center; background: linear-gradient(160deg, rgba(111,208,230,.14), rgba(6,17,29,.4)); border: 1px solid rgba(255,255,255,.1); }
+  .lock-badge svg { width: 120px; height: 120px; color: var(--wave); filter: drop-shadow(0 0 30px rgba(55,198,192,.5)); }
 
-  /* final */
-  .final { text-align: center; position: relative; overflow: hidden; }
-  .final .blob { position: absolute; width: 520px; height: 520px; border-radius: 50%; top: -160px; left: 50%; transform: translateX(-50%);
-    background: radial-gradient(circle, rgba(47,107,255,.20), transparent 62%); pointer-events: none; }
-  .final h2 { max-width: 760px; margin: 0 auto 14px; position: relative; z-index: 2; }
-  .final .dolphin-final { width: 68px; border-radius: 16px; margin: 0 auto 22px; display: block; box-shadow: 0 14px 30px -10px rgba(27,80,214,.5); animation: drift 6s ease-in-out infinite; }
-  .final .cta { margin-top: 34px; justify-content: center; position: relative; z-index: 2; }
-  .price-note { margin-top: 24px; color: var(--ink-soft); font-size: 14.5px; position: relative; z-index: 2; }
+  .final { text-align: center; }
+  .final h2 { max-width: 720px; margin: 0 auto 22px; }
+  .final .cta { margin-top: 34px; justify-content: center; }
+  .price-note { margin-top: 22px; color: var(--text-soft); font-size: 14.5px; }
 
-  /* footer */
-  footer { background: var(--paper-2); color: var(--ink-soft); padding: 50px 0; font-size: 14.5px; border-top: 1px solid var(--line-soft); }
+  footer { background: var(--ink-2); color: #8ba4a8; padding: 46px 0; font-size: 14px; }
   footer .wrap { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; }
-  footer a:hover { color: var(--moss-deep); }
-  footer .flinks { display: flex; gap: 26px; }
-  footer .copy { color: var(--ink-soft); }
+  footer a:hover { color: #fff; }
+  footer .flinks { display: flex; gap: 24px; }
+  footer .copy { color: #6d868a; }
 
-  @media (max-width: 940px) {
+  @media (max-width: 900px) {
     nav .links { display: none; }
-    .hero-inner { grid-template-columns: 1fr; gap: 60px; text-align: center; }
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
     .hero-copy .eyebrow, .hero-copy .lede { margin-left: auto; margin-right: auto; }
     .cta { justify-content: center; }
-    .hero-figure { min-height: 380px; margin-top: 10px; }
     .features { grid-template-columns: 1fr; }
     .gallery { grid-template-columns: 1fr; }
-    figure.shot, figure.shot.wide { grid-column: span 1; }
     .privacy .grid { grid-template-columns: 1fr; }
-    .guard { max-width: 260px; margin: 0 auto; }
+    .lock-badge { max-width: 220px; margin: 0 auto; }
   }
 </style>
 </head>
@@ -248,11 +175,12 @@
 
 <!-- ============ HERO ============ -->
 <header class="hero">
-  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
   <div class="wrap">
-    <nav class="bar">
+    <nav class="reveal d1">
       <div class="brand">
-        <img class="mark" src="images/app-icon.png" alt="Digital Life" width="40" height="40">
+        <span class="mark">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 15c3.5 0 3.5-3 7-3s3.5 3 7 3 3.5-3 4-3" stroke="#04241f" stroke-width="2.2" stroke-linecap="round"/><path d="M14 5c-2 .5-3.5 2.2-4 4.5C11.5 9 13.5 9 15 10.5" stroke="#04241f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
         Digital Life
       </div>
       <div class="nav-right">
@@ -260,7 +188,7 @@
           <a href="#features" data-i18n="nav.features">Features</a>
           <a href="#screens" data-i18n="nav.screens">Screenshots</a>
           <a href="#privacy" data-i18n="nav.privacy">Privacy</a>
-          <a href="https://github.com/Link-X/digitallife-releases" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://gitee.com/xudaobin/digitallife-releases" target="_blank" rel="noopener">gitee</a>
         </div>
         <select class="lang-select" id="langSelect" aria-label="Language">
           <option value="en">English</option>
@@ -276,34 +204,23 @@
     </nav>
   </div>
 
-  <div class="wrap">
-    <div class="hero-inner">
+  <div class="wrap hero-inner">
+    <div class="hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow reveal d1"><span class="dot"></span> <span data-i18n="hero.eyebrow">macOS · Privacy-first</span></span>
-        <h1 class="hero-title serif reveal d2" data-i18n="hero.title">Track everything.<br><em class="ink">Upload nothing.</em></h1>
+        <span class="eyebrow reveal d2"><span class="dot"></span> <span data-i18n="hero.eyebrow">macOS · Privacy-first</span></span>
+        <h1 class="hero-title serif reveal d2" data-i18n="hero.title">Track everything.<br><em>Upload nothing.</em></h1>
         <p class="lede reveal d3" data-i18n="hero.lede">App usage, battery, network and files — a native menu-bar app that keeps <b>100% of your data on your Mac.</b> No cloud, no account, nothing uploaded.</p>
         <div class="cta reveal d4">
-          <a class="btn-primary" href="https://github.com/Link-X/digitallife-releases/releases/latest">
-            <svg viewBox="0 0 24 24" width="19" height="19" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="#fbf7ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a class="btn btn-primary" href="https://gitee.com/xudaobin/digitallife-releases/releases/latest">
+            <svg viewBox="0 0 24 24" width="19" height="19" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="#04241f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span data-i18n="hero.download">Download for macOS</span>
           </a>
-          <a class="btn-arrow" href="https://github.com/Link-X/digitallife-releases" target="_blank" rel="noopener">
-            <span data-i18n="hero.github">View on GitHub</span> <span class="a">→</span>
-          </a>
+          <a class="btn btn-ghost" href="https://gitee.com/xudaobin/digitallife-releases" target="_blank" rel="noopener" data-i18n="hero.gitee">View on gitee</a>
         </div>
         <p class="req reveal d4" data-i18n="hero.req"><b>Free for personal use</b> · macOS 13+ · Apple Silicon · <b>Notarized</b></p>
       </div>
-
       <div class="hero-figure reveal d5">
-        <div class="app-card">
-          <div class="chrome"><i></i><i></i><i></i></div>
-          <img data-src-en="images/en/01-overview.png" data-src-zh="images/zh/01-overview.png" src="images/en/01-overview.png" alt="Digital Life overview dashboard">
-        </div>
-        <!-- hand-drawn leaping dolphin -->
-        <img class="dolphin-hero" src="images/app-icon.png" alt="" aria-hidden="true">
-        <svg class="spark s1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z"/></svg>
-        <svg class="spark s2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z"/></svg>
-        <svg class="spark s3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z"/></svg>
+        <img src="images/en/01-overview.png" alt="Digital Life overview dashboard">
       </div>
     </div>
   </div>
@@ -312,46 +229,46 @@
 <!-- ============ TRUST BAR ============ -->
 <div class="trust">
   <div class="wrap">
-    <div class="pill reveal"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-i18n="trust.local">100% local storage</span></div>
-    <div class="pill reveal d1"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8V7a6 6 0 00-12 0v1M5 8h14l-1 13H6L5 8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg> <span data-i18n="trust.account">No account, no login</span></div>
-    <div class="pill reveal d2"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z" stroke="currentColor" stroke-width="1.8"/><path d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-i18n="trust.notarized">Notarized by Apple</span></div>
-    <div class="pill reveal d3"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2-7 4 14 2-7h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-i18n="trust.native">Lightweight &amp; native</span></div>
+    <div class="item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-i18n="trust.local">100% local storage</span></div>
+    <div class="item"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8V7a6 6 0 00-12 0v1M5 8h14l-1 13H6L5 8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg> <span data-i18n="trust.account">No account, no login</span></div>
+    <div class="item"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z" stroke="currentColor" stroke-width="1.8"/><path d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-i18n="trust.notarized">Notarized by Apple</span></div>
+    <div class="item"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2-7 4 14 2-7h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-i18n="trust.native">Lightweight &amp; native</span></div>
   </div>
 </div>
 
 <!-- ============ FEATURES ============ -->
 <section class="block" id="features">
   <div class="wrap">
-    <div class="kicker reveal" data-i18n="feat.kicker">One app, the whole picture</div>
-    <h2 class="serif reveal d1" data-i18n="feat.h2">Everything about your Mac,<br>in one quiet place.</h2>
-    <p class="section-lede reveal d2" data-i18n="feat.lede">Not another single-purpose tracker. Digital Life brings time, files, energy and storage together — beautifully, and entirely on your device.</p>
+    <div class="kicker" data-i18n="feat.kicker">One app, the whole picture</div>
+    <h2 class="serif" data-i18n="feat.h2">Everything about your Mac,<br>in one quiet place.</h2>
+    <p class="section-lede" data-i18n="feat.lede">Not another single-purpose tracker. Digital Life brings time, files, energy and storage together — beautifully, and entirely on your device.</p>
     <div class="features">
-      <div class="card reveal">
+      <div class="card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3 data-i18n="feat.1t">App usage &amp; screen time</h3>
         <p data-i18n="feat.1d">See which apps you actually use and for how long, with daily rankings and app icons — plus screen time vs. the previous period.</p>
       </div>
-      <div class="card warm reveal d1">
+      <div class="card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7a2 2 0 012-2h4l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2V7z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
         <h3 data-i18n="feat.2t">File activity</h3>
         <p data-i18n="feat.2d">Created, deleted and modified files — grouped by directory, type and the app that made the change.</p>
       </div>
-      <div class="card reveal d2">
+      <div class="card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
         <h3 data-i18n="feat.3t">Energy &amp; battery</h3>
         <p data-i18n="feat.3d">Battery and power trends, plus a per-app energy ranking that shows what's really draining your Mac.</p>
       </div>
-      <div class="card reveal">
+      <div class="card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z" stroke="currentColor" stroke-width="1.8"/><path d="M12 12l5-3M12 12v-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
         <h3 data-i18n="feat.4t">Disk space &amp; cleanup</h3>
         <p data-i18n="feat.4d">Scan your disk to find the biggest folders and files, then clear out junk to reclaim space.</p>
       </div>
-      <div class="card reveal d1">
+      <div class="card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5m0 14h16M8 19v-6m4 6V9m4 10v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3 data-i18n="feat.5t">Daily / weekly / monthly reports</h3>
         <p data-i18n="feat.5d">Clear, polished reports that turn raw activity into insight — with network traffic and CPU/memory top lists.</p>
       </div>
-      <div class="card warm reveal d2">
+      <div class="card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3 data-i18n="feat.6t">Full control of your data</h3>
         <p data-i18n="feat.6d">Clear data by day or category, and export everything to JSON or CSV. It's your data — always.</p>
@@ -363,19 +280,16 @@
 <!-- ============ SCREENS ============ -->
 <section class="block screens" id="screens">
   <div class="wrap center">
-    <div class="kicker reveal" data-i18n="screens.kicker">Take a look</div>
-    <h2 class="serif reveal d1" data-i18n="screens.h2">Native. Polished. Yours.</h2>
-    <p class="section-lede reveal d2" data-i18n="screens.lede">A menu-bar app built with SwiftUI for Apple Silicon — designed to sip resources while it runs quietly in the background.</p>
+    <div class="kicker" data-i18n="screens.kicker">Take a look</div>
+    <h2 class="serif" data-i18n="screens.h2">Native. Polished. Yours.</h2>
+    <p class="section-lede" data-i18n="screens.lede">A menu-bar app built with SwiftUI for Apple Silicon — designed to sip resources while it runs quietly in the background.</p>
   </div>
   <div class="wrap">
     <div class="gallery">
-      <figure class="shot wide reveal"><div class="win"><i></i><i></i><i></i></div><img data-src-en="images/en/01-overview.png" data-src-zh="images/zh/01-overview.png" src="images/en/01-overview.png" alt="Overview"><figcaption data-i18n="cap.1">Your Mac at a glance</figcaption></figure>
-      <figure class="shot wide reveal d1"><div class="win"><i></i><i></i><i></i></div><img data-src-en="images/en/02-report.png" data-src-zh="images/zh/02-report.png" src="images/en/02-report.png" alt="Reports"><figcaption data-i18n="cap.2">Daily, weekly &amp; monthly reports</figcaption></figure>
-      <figure class="shot reveal"><div class="win"><i></i><i></i><i></i></div><img data-src-en="images/en/04-files.png" data-src-zh="images/zh/04-files.png" src="images/en/04-files.png" alt="Files"><figcaption data-i18n="cap.3">File activity, grouped and searchable</figcaption></figure>
-      <figure class="shot reveal d1"><div class="win"><i></i><i></i><i></i></div><img data-src-en="images/en/06-clean.png" data-src-zh="images/zh/06-clean.png" src="images/en/06-clean.png" alt="Cleanup"><figcaption data-i18n="cap.4">Disk scan &amp; junk cleanup</figcaption></figure>
-      <figure class="shot reveal d2"><div class="win"><i></i><i></i><i></i></div><img data-src-en="images/en/07-settings.png" data-src-zh="images/zh/07-settings.png" src="images/en/07-settings.png" alt="Settings"><figcaption data-i18n="cap.5">Tune scope &amp; reminders your way</figcaption></figure>
-      <figure class="shot wide reveal d3"><div class="win"><i></i><i></i><i></i></div><img data-src-en="images/en/03-timeline.png" data-src-zh="images/zh/03-timeline.png" src="images/en/03-timeline.png" alt="Usage timeline"><figcaption data-i18n="cap.6">A minute-by-minute usage timeline</figcaption></figure>
-      <figure class="shot wide reveal d4"><div class="win"><i></i><i></i><i></i></div><img data-src-en="images/en/05-tree.png" data-src-zh="images/zh/05-tree.png" src="images/en/05-tree.png" alt="Directory tree"><figcaption data-i18n="cap.7">Drill into directory activity</figcaption></figure>
+      <figure><img data-src-en="images/en/02-report.png" data-src-zh="images/zh/02-report.png" src="images/en/02-report.png" alt="Reports"><figcaption data-i18n="cap.1">Daily, weekly &amp; monthly reports</figcaption></figure>
+      <figure><img data-src-en="images/en/03-files.png" data-src-zh="images/zh/03-files.png" src="images/en/03-files.png" alt="Files"><figcaption data-i18n="cap.2">File activity, grouped and searchable</figcaption></figure>
+      <figure><img data-src-en="images/en/04-apps.png" data-src-zh="images/zh/04-apps.png" src="images/en/04-apps.png" alt="Apps"><figcaption data-i18n="cap.3">App usage rankings with icons</figcaption></figure>
+      <figure><img data-src-en="images/en/05-clean.png" data-src-zh="images/zh/05-clean.png" src="images/en/05-clean.png" alt="Cleanup"><figcaption data-i18n="cap.4">Disk scan &amp; junk cleanup</figcaption></figure>
     </div>
   </div>
 </section>
@@ -385,18 +299,17 @@
   <div class="wrap">
     <div class="grid">
       <div>
-        <div class="kicker reveal" data-i18n="priv.kicker">Privacy by design</div>
-        <h2 class="serif reveal d1" data-i18n="priv.h2">Your life stays on your Mac.</h2>
-        <p class="section-lede reveal d2" data-i18n="priv.lede">This is what Digital Life cares about most. There is no server to send your data to — because we never built one.</p>
+        <div class="kicker" style="color:var(--wave)" data-i18n="priv.kicker">Privacy by design</div>
+        <h2 class="serif" data-i18n="priv.h2">Your life stays on your Mac.</h2>
+        <p class="section-lede" data-i18n="priv.lede">This is what Digital Life cares about most. There is no server to send your data to — because we never built one.</p>
         <ul>
-          <li class="reveal d2"><span class="ck"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="priv.1"><b>100% local.</b> Everything is written to a database on your own Mac, with no network reporting whatsoever.</span></li>
-          <li class="reveal d3"><span class="ck"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="priv.2"><b>One optional network call.</b> Only when <i>you</i> click &quot;Check for Updates&quot; — it fetches a version number and sends none of your data.</span></li>
-          <li class="reveal d4"><span class="ck"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="priv.3"><b>Optional encryption.</b> Turn on database encryption in Settings — the key lives in your system Keychain.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="priv.1"><b>100% local.</b> Everything is written to a database on your own Mac, with no network reporting whatsoever.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="priv.2"><b>One optional network call.</b> Only when <i>you</i> click &quot;Check for Updates&quot; — it fetches a version number and sends none of your data.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="priv.3"><b>Optional encryption.</b> Turn on database encryption in Settings — the key lives in your system Keychain.</span></li>
         </ul>
       </div>
-      <div class="guard reveal d2">
-        <span class="ring"></span><span class="ring r2"></span>
-        <img class="dolphin-guard" src="images/app-icon.png" alt="" aria-hidden="true">
+      <div class="lock-badge">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 10V7a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="15" r="1.6" fill="currentColor"/><path d="M12 16.6V18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </div>
     </div>
   </div>
@@ -404,18 +317,16 @@
 
 <!-- ============ FINAL CTA ============ -->
 <section class="block final">
-  <span class="blob"></span>
   <div class="wrap">
-    <img class="dolphin-final" src="images/app-icon.png" alt="" aria-hidden="true">
-    <div class="kicker reveal" style="justify-content:center" data-i18n="final.kicker">Ready when you are</div>
-    <h2 class="serif reveal d1" data-i18n="final.h2">Understand your Mac —<br>without giving it away.</h2>
-    <div class="cta reveal d2">
-      <a class="btn-primary" href="https://github.com/Link-X/digitallife-releases/releases/latest">
-        <svg viewBox="0 0 24 24" width="19" height="19" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="#fbf7ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="kicker" data-i18n="final.kicker">Ready when you are</div>
+    <h2 class="serif" data-i18n="final.h2">Understand your Mac —<br>without giving it away.</h2>
+    <div class="cta">
+      <a class="btn btn-primary" href="https://gitee.com/xudaobin/digitallife-releases/releases/latest">
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="#04241f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span data-i18n="final.download">Download the latest release</span>
       </a>
     </div>
-    <p class="price-note reveal d2" data-i18n="final.note">Free for personal use · macOS 13 (Ventura)+ · Apple Silicon</p>
+    <p class="price-note" data-i18n="final.note">Free for personal use · macOS 13 (Ventura)+ · Apple Silicon</p>
   </div>
 </section>
 
@@ -425,8 +336,8 @@
     <div class="copy" data-i18n="foot.copy">© 2026 许道斌 (Daobin Xu). All rights reserved.</div>
     <div class="flinks">
       <a href="privacy.html" data-i18n="foot.privacy">Privacy Policy</a>
-      <a href="https://github.com/Link-X/digitallife-releases" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://github.com/Link-X/digitallife-releases/releases/latest" data-i18n="foot.download">Download</a>
+      <a href="https://gitee.com/xudaobin/digitallife-releases/" target="_blank" rel="noopener">gitee</a>
+      <a href="https://gitee.com/xudaobin/digitallife-releases/releases/latest" data-i18n="foot.download">Download</a>
     </div>
   </div>
 </footer>
@@ -439,9 +350,9 @@
     en: {
       'nav.features':'Features','nav.screens':'Screenshots','nav.privacy':'Privacy',
       'hero.eyebrow':'macOS · Privacy-first',
-      'hero.title':'Track everything.<br><em class="ink">Upload nothing.</em>',
+      'hero.title':'Track everything.<br><em>Upload nothing.</em>',
       'hero.lede':'App usage, battery, network and files — a native menu-bar app that keeps <b>100% of your data on your Mac.</b> No cloud, no account, nothing uploaded.',
-      'hero.download':'Download for macOS','hero.github':'View on GitHub',
+      'hero.download':'Download for macOS','hero.gitee':'View on Gitee',
       'hero.req':'<b>Free for personal use</b> · macOS 13+ · Apple Silicon · <b>Notarized</b>',
       'trust.local':'100% local storage','trust.account':'No account, no login','trust.notarized':'Notarized by Apple','trust.native':'Lightweight &amp; native',
       'feat.kicker':'One app, the whole picture',
@@ -454,7 +365,7 @@
       'feat.5t':'Daily / weekly / monthly reports','feat.5d':'Clear, polished reports that turn raw activity into insight — with network traffic and CPU/memory top lists.',
       'feat.6t':'Full control of your data','feat.6d':"Clear data by day or category, and export everything to JSON or CSV. It's your data — always.",
       'screens.kicker':'Take a look','screens.h2':'Native. Polished. Yours.','screens.lede':'A menu-bar app built with SwiftUI for Apple Silicon — designed to sip resources while it runs quietly in the background.',
-      'cap.1':'Your Mac at a glance','cap.2':'Daily, weekly &amp; monthly reports','cap.3':'File activity, grouped and searchable','cap.4':'Disk scan &amp; junk cleanup','cap.5':'Tune scope &amp; reminders your way','cap.6':'A minute-by-minute usage timeline','cap.7':'Drill into directory activity',
+      'cap.1':'Daily, weekly &amp; monthly reports','cap.2':'File activity, grouped and searchable','cap.3':'App usage rankings with icons','cap.4':'Disk scan &amp; junk cleanup',
       'priv.kicker':'Privacy by design','priv.h2':'Your life stays on your Mac.','priv.lede':'This is what Digital Life cares about most. There is no server to send your data to — because we never built one.',
       'priv.1':'<b>100% local.</b> Everything is written to a database on your own Mac, with no network reporting whatsoever.',
       'priv.2':'<b>One optional network call.</b> Only when <i>you</i> click &quot;Check for Updates&quot; — it fetches a version number and sends none of your data.',
@@ -465,9 +376,9 @@
     zh: {
       'nav.features':'功能','nav.screens':'截图','nav.privacy':'隐私',
       'hero.eyebrow':'macOS · 隐私优先',
-      'hero.title':'记录一切,<br><em class="ink">永不上传。</em>',
+      'hero.title':'记录一切,<br><em>永不上传。</em>',
       'hero.lede':'应用时长、电量、网络与文件——一个原生菜单栏 App,<b>你的数据 100% 留在自己的 Mac 上。</b>无云端、无账号、绝不上传。',
-      'hero.download':'下载 macOS 版','hero.github':'在 GitHub 查看',
+      'hero.download':'下载 macOS 版','hero.gitee':'在 Gitee 查看',
       'hero.req':'<b>个人使用免费</b> · macOS 13+ · Apple Silicon · <b>已公证</b>',
       'trust.local':'100% 本地存储','trust.account':'无账号、无登录','trust.notarized':'Apple 公证','trust.native':'原生轻量',
       'feat.kicker':'一个 App,看清全貌',
@@ -480,7 +391,7 @@
       'feat.5t':'日报 / 周报 / 月报','feat.5d':'清晰精致的报告,把原始活动变成洞察——含网络流量与 CPU/内存排行。',
       'feat.6t':'数据完全由你掌控','feat.6d':'可按天或按类别清除数据,并导出为 JSON 或 CSV。这是你的数据——始终如此。',
       'screens.kicker':'看一看','screens.h2':'原生。精致。属于你。','screens.lede':'用 SwiftUI 为 Apple Silicon 打造的菜单栏 App——在后台安静运行,只占极少资源。',
-      'cap.1':'一眼看清你的 Mac','cap.2':'日报、周报与月报','cap.3':'文件动态,分组可搜','cap.4':'磁盘扫描与垃圾清理','cap.5':'监控范围与提醒,随心配置','cap.6':'细到分钟的使用时间轴','cap.7':'目录活动树,逐层下钻',
+      'cap.1':'日报、周报与月报','cap.2':'文件动态,分组可搜','cap.3':'应用时长排行(带图标)','cap.4':'磁盘扫描与垃圾清理',
       'priv.kicker':'隐私,与生俱来','priv.h2':'你的生活,只留在你的 Mac。','priv.lede':'这是数字人生最在意的事。没有任何服务器接收你的数据——因为我们从没建过。',
       'priv.1':'<b>100% 本地。</b>所有数据都写入你自己 Mac 上的数据库,绝无任何网络上报。',
       'priv.2':'<b>唯一的可选联网。</b>仅当<i>你</i>点击「检查更新」时——只取一个版本号,不发送你的任何数据。',
@@ -491,9 +402,9 @@
     ja: {
       'nav.features':'機能','nav.screens':'スクリーンショット','nav.privacy':'プライバシー',
       'hero.eyebrow':'macOS · プライバシー重視',
-      'hero.title':'すべてを記録。<br><em class="ink">何も送信しない。</em>',
+      'hero.title':'すべてを記録。<br><em>何も送信しない。</em>',
       'hero.lede':'アプリ使用時間、バッテリー、ネットワーク、ファイル——<b>データは 100% あなたの Mac に留まります。</b>クラウドなし、アカウントなし、アップロード一切なし。',
-      'hero.download':'macOS 版をダウンロード','hero.github':'GitHub で見る',
+      'hero.download':'macOS 版をダウンロード','hero.gitee':'gitee で見る',
       'hero.req':'<b>個人利用は無料</b> · macOS 13+ · Apple Silicon · <b>公証済み</b>',
       'trust.local':'100% ローカル保存','trust.account':'アカウント・ログイン不要','trust.notarized':'Apple 公証済み','trust.native':'軽量・ネイティブ',
       'feat.kicker':'ひとつのアプリで全体を把握',
@@ -506,7 +417,7 @@
       'feat.5t':'日次 / 週次 / 月次レポート','feat.5d':'生の活動を洞察に変える洗練されたレポート——ネットワーク通信量や CPU/メモリのランキングも。',
       'feat.6t':'データを完全にコントロール','feat.6d':'日別・カテゴリ別にデータを消去でき、JSON や CSV に書き出しも可能。あなたのデータは、常にあなたのもの。',
       'screens.kicker':'見てみる','screens.h2':'ネイティブ。洗練。あなたのもの。','screens.lede':'Apple Silicon 向けに SwiftUI で作られたメニューバーアプリ——バックグラウンドで静かに動き、リソースはごくわずか。',
-      'cap.1':'Mac をひと目で把握','cap.2':'日次・週次・月次レポート','cap.3':'整理・検索できるファイルの動き','cap.4':'ディスクスキャンと不要ファイル削除','cap.5':'監視範囲と通知を自由に設定','cap.6':'分単位の使用タイムライン','cap.7':'ディレクトリ活動をドリルダウン',
+      'cap.1':'日次・週次・月次レポート','cap.2':'整理・検索できるファイルの動き','cap.3':'アイコン付きアプリ使用ランキング','cap.4':'ディスクスキャンと不要ファイル削除',
       'priv.kicker':'プライバシー・バイ・デザイン','priv.h2':'あなたの生活は Mac の中に。','priv.lede':'Digital Life が最も大切にしていること。データを送るサーバーはありません——最初から作っていないからです。',
       'priv.1':'<b>100% ローカル。</b>すべては自分の Mac 上のデータベースに書き込まれ、ネットワークへの送信は一切ありません。',
       'priv.2':'<b>唯一の任意通信。</b><i>あなた</i>が「アップデートを確認」を押したときだけ——バージョン番号を取得するだけで、データは一切送信しません。',
@@ -517,9 +428,9 @@
     ko: {
       'nav.features':'기능','nav.screens':'스크린샷','nav.privacy':'개인정보',
       'hero.eyebrow':'macOS · 프라이버시 우선',
-      'hero.title':'모든 것을 기록.<br><em class="ink">아무것도 전송하지 않음.</em>',
+      'hero.title':'모든 것을 기록.<br><em>아무것도 전송하지 않음.</em>',
       'hero.lede':'앱 사용 시간, 배터리, 네트워크, 파일——<b>데이터는 100% 당신의 Mac에 머뭅니다.</b> 클라우드 없음, 계정 없음, 업로드 전혀 없음.',
-      'hero.download':'macOS용 다운로드','hero.github':'GitHub에서 보기',
+      'hero.download':'macOS용 다운로드','hero.gitee':'gitee에서 보기',
       'hero.req':'<b>개인 사용 무료</b> · macOS 13+ · Apple Silicon · <b>공증 완료</b>',
       'trust.local':'100% 로컬 저장','trust.account':'계정·로그인 불필요','trust.notarized':'Apple 공증','trust.native':'가볍고 네이티브',
       'feat.kicker':'하나의 앱으로 전체를 파악',
@@ -532,7 +443,7 @@
       'feat.5t':'일간 / 주간 / 월간 리포트','feat.5d':'원시 활동을 통찰로 바꾸는 깔끔한 리포트——네트워크 트래픽과 CPU/메모리 순위 포함.',
       'feat.6t':'데이터를 완전히 제어','feat.6d':'일별 또는 범주별로 데이터를 삭제하고, 모든 것을 JSON 또는 CSV로 내보내세요. 당신의 데이터는 언제나 당신의 것.',
       'screens.kicker':'살펴보기','screens.h2':'네이티브. 정교함. 당신의 것.','screens.lede':'Apple Silicon을 위해 SwiftUI로 만든 메뉴 막대 앱——백그라운드에서 조용히 실행되며 리소스를 거의 쓰지 않습니다.',
-      'cap.1':'한눈에 보는 내 Mac','cap.2':'일간·주간·월간 리포트','cap.3':'정리·검색 가능한 파일 활동','cap.4':'디스크 스캔과 정크 정리','cap.5':'모니터링 범위와 알림을 원하는 대로','cap.6':'분 단위 사용 타임라인','cap.7':'디렉터리 활동을 단계별로 탐색',
+      'cap.1':'일간·주간·월간 리포트','cap.2':'정리·검색 가능한 파일 활동','cap.3':'아이콘이 있는 앱 사용 순위','cap.4':'디스크 스캔과 정크 정리',
       'priv.kicker':'설계된 프라이버시','priv.h2':'당신의 삶은 Mac에 머뭅니다.','priv.lede':'Digital Life가 가장 중요하게 여기는 것입니다. 데이터를 보낼 서버가 없습니다——처음부터 만들지 않았으니까요.',
       'priv.1':'<b>100% 로컬.</b> 모든 것은 자신의 Mac에 있는 데이터베이스에 기록되며, 어떤 네트워크 보고도 없습니다.',
       'priv.2':'<b>단 하나의 선택적 통신.</b> <i>당신</i>이 ‘업데이트 확인’을 누를 때만——버전 번호만 가져오고 데이터는 전혀 보내지 않습니다.',
@@ -543,9 +454,9 @@
     fr: {
       'nav.features':'Fonctions','nav.screens':'Captures','nav.privacy':'Confidentialité',
       'hero.eyebrow':"macOS · Confidentialité d'abord",
-      'hero.title':'Tout suivre.<br><em class="ink">Ne rien envoyer.</em>',
+      'hero.title':'Tout suivre.<br><em>Ne rien envoyer.</em>',
       'hero.lede':"Applications, batterie, réseau et fichiers — une app native de barre de menus qui garde <b>100 % de vos données sur votre Mac.</b> Aucun cloud, aucun compte, rien n'est envoyé.",
-      'hero.download':'Télécharger pour macOS','hero.github':'Voir sur GitHub',
+      'hero.download':'Télécharger pour macOS','hero.gitee':'Voir sur gitee',
       'hero.req':'<b>Gratuit pour un usage personnel</b> · macOS 13+ · Apple Silicon · <b>Certifié</b>',
       'trust.local':'100 % stockage local','trust.account':'Sans compte, sans connexion','trust.notarized':'Certifié par Apple','trust.native':'Léger et natif',
       'feat.kicker':"Une app, une vue d'ensemble",
@@ -558,7 +469,7 @@
       'feat.5t':'Rapports quotidiens / hebdo / mensuels','feat.5d':'Des rapports clairs et soignés qui transforment l’activité brute en informations — trafic réseau et classements CPU/mémoire inclus.',
       'feat.6t':'Contrôle total de vos données','feat.6d':'Effacez les données par jour ou par catégorie, et exportez tout en JSON ou CSV. Ce sont vos données — toujours.',
       'screens.kicker':'Un aperçu','screens.h2':'Native. Soignée. La vôtre.','screens.lede':'Une app de barre de menus créée avec SwiftUI pour Apple Silicon — conçue pour consommer très peu tout en tournant discrètement en arrière-plan.',
-      'cap.1':"Votre Mac en un coup d'œil",'cap.2':'Rapports quotidiens, hebdo et mensuels','cap.3':'Activité des fichiers, groupée et cherchable','cap.4':'Analyse du disque et nettoyage','cap.5':'Réglez périmètre et rappels à votre guise','cap.6':'Une frise d’usage minute par minute','cap.7':'Explorez l’activité dossier par dossier',
+      'cap.1':'Rapports quotidiens, hebdo et mensuels','cap.2':'Activité des fichiers, groupée et cherchable','cap.3':"Classements d'usage avec icônes",'cap.4':'Analyse du disque et nettoyage',
       'priv.kicker':'Confidentialité par conception','priv.h2':'Votre vie reste sur votre Mac.','priv.lede':"C'est ce qui compte le plus pour Digital Life. Aucun serveur où envoyer vos données — car nous n'en avons jamais créé.",
       'priv.1':'<b>100 % local.</b> Tout est écrit dans une base de données sur votre propre Mac, sans aucun envoi réseau.',
       'priv.2':'<b>Un seul appel réseau optionnel.</b> Uniquement quand <i>vous</i> cliquez sur « Rechercher les mises à jour » — il récupère un numéro de version et n’envoie aucune de vos données.',
@@ -569,9 +480,9 @@
     de: {
       'nav.features':'Funktionen','nav.screens':'Screenshots','nav.privacy':'Datenschutz',
       'hero.eyebrow':'macOS · Datenschutz zuerst',
-      'hero.title':'Alles erfassen.<br><em class="ink">Nichts hochladen.</em>',
+      'hero.title':'Alles erfassen.<br><em>Nichts hochladen.</em>',
       'hero.lede':'App-Nutzung, Akku, Netzwerk und Dateien — eine native Menüleisten-App, die <b>100 % deiner Daten auf deinem Mac behält.</b> Keine Cloud, kein Konto, nichts wird hochgeladen.',
-      'hero.download':'Für macOS laden','hero.github':'Auf GitHub ansehen',
+      'hero.download':'Für macOS laden','hero.gitee':'Auf gitee ansehen',
       'hero.req':'<b>Kostenlos für privaten Gebrauch</b> · macOS 13+ · Apple Silicon · <b>Notarisiert</b>',
       'trust.local':'100 % lokale Speicherung','trust.account':'Kein Konto, kein Login','trust.notarized':'Von Apple notarisiert','trust.native':'Leicht &amp; nativ',
       'feat.kicker':'Eine App, das ganze Bild',
@@ -584,7 +495,7 @@
       'feat.5t':'Tages- / Wochen- / Monatsberichte','feat.5d':'Klare, sorgfältig gestaltete Berichte, die Rohdaten in Erkenntnisse verwandeln — mit Netzwerkverkehr und CPU-/Speicher-Ranglisten.',
       'feat.6t':'Volle Kontrolle über deine Daten','feat.6d':'Lösche Daten nach Tag oder Kategorie und exportiere alles als JSON oder CSV. Es sind deine Daten — immer.',
       'screens.kicker':'Wirf einen Blick','screens.h2':'Nativ. Fein. Deins.','screens.lede':'Eine Menüleisten-App, mit SwiftUI für Apple Silicon gebaut — darauf ausgelegt, im Hintergrund leise zu laufen und kaum Ressourcen zu verbrauchen.',
-      'cap.1':'Dein Mac auf einen Blick','cap.2':'Tages-, Wochen- &amp; Monatsberichte','cap.3':'Dateiaktivität, gruppiert und durchsuchbar','cap.4':'Datenträger-Scan &amp; Aufräumen','cap.5':'Umfang &amp; Erinnerungen nach deinem Wunsch','cap.6':'Nutzungsverlauf, Minute für Minute','cap.7':'In die Ordneraktivität eintauchen',
+      'cap.1':'Tages-, Wochen- &amp; Monatsberichte','cap.2':'Dateiaktivität, gruppiert und durchsuchbar','cap.3':'Nutzungsranglisten mit Symbolen','cap.4':'Datenträger-Scan &amp; Aufräumen',
       'priv.kicker':'Datenschutz von Grund auf','priv.h2':'Dein Leben bleibt auf deinem Mac.','priv.lede':'Das ist Digital Life am wichtigsten. Es gibt keinen Server, an den deine Daten gehen — weil wir nie einen gebaut haben.',
       'priv.1':'<b>100 % lokal.</b> Alles wird in eine Datenbank auf deinem eigenen Mac geschrieben, ganz ohne Netzwerkübertragung.',
       'priv.2':'<b>Ein optionaler Netzwerkaufruf.</b> Nur wenn <i>du</i> auf „Nach Updates suchen“ klickst — er holt eine Versionsnummer und sendet keine deiner Daten.',
@@ -595,9 +506,9 @@
     es: {
       'nav.features':'Funciones','nav.screens':'Capturas','nav.privacy':'Privacidad',
       'hero.eyebrow':'macOS · Privacidad ante todo',
-      'hero.title':'Regístralo todo.<br><em class="ink">No subas nada.</em>',
+      'hero.title':'Regístralo todo.<br><em>No subas nada.</em>',
       'hero.lede':'Uso de apps, batería, red y archivos — una app nativa de la barra de menús que mantiene <b>el 100 % de tus datos en tu Mac.</b> Sin nube, sin cuenta, sin subir nada.',
-      'hero.download':'Descargar para macOS','hero.github':'Ver en GitHub',
+      'hero.download':'Descargar para macOS','hero.gitee':'Ver en gitee',
       'hero.req':'<b>Gratis para uso personal</b> · macOS 13+ · Apple Silicon · <b>Certificada</b>',
       'trust.local':'100 % almacenamiento local','trust.account':'Sin cuenta, sin inicio de sesión','trust.notarized':'Certificada por Apple','trust.native':'Ligera y nativa',
       'feat.kicker':'Una app, el panorama completo',
@@ -610,7 +521,7 @@
       'feat.5t':'Informes diarios / semanales / mensuales','feat.5d':'Informes claros y cuidados que convierten la actividad en información — con tráfico de red y clasificaciones de CPU/memoria.',
       'feat.6t':'Control total de tus datos','feat.6d':'Borra datos por día o categoría y expórtalo todo a JSON o CSV. Son tus datos — siempre.',
       'screens.kicker':'Echa un vistazo','screens.h2':'Nativa. Pulida. Tuya.','screens.lede':'Una app de barra de menús creada con SwiftUI para Apple Silicon — diseñada para consumir muy poco mientras se ejecuta en segundo plano.',
-      'cap.1':'Tu Mac de un vistazo','cap.2':'Informes diarios, semanales y mensuales','cap.3':'Actividad de archivos, agrupada y buscable','cap.4':'Análisis de disco y limpieza','cap.5':'Ajusta alcance y recordatorios a tu gusto','cap.6':'Una línea de tiempo de uso minuto a minuto','cap.7':'Explora la actividad por carpetas',
+      'cap.1':'Informes diarios, semanales y mensuales','cap.2':'Actividad de archivos, agrupada y buscable','cap.3':'Clasificaciones de uso con iconos','cap.4':'Análisis de disco y limpieza',
       'priv.kicker':'Privacidad por diseño','priv.h2':'Tu vida se queda en tu Mac.','priv.lede':'Esto es lo que más le importa a Digital Life. No hay servidor al que enviar tus datos — porque nunca creamos uno.',
       'priv.1':'<b>100 % local.</b> Todo se escribe en una base de datos en tu propio Mac, sin ningún envío por red.',
       'priv.2':'<b>Una sola conexión opcional.</b> Solo cuando <i>tú</i> pulsas « Buscar actualizaciones » — obtiene un número de versión y no envía ninguno de tus datos.',
@@ -621,9 +532,9 @@
     pt: {
       'nav.features':'Recursos','nav.screens':'Capturas','nav.privacy':'Privacidade',
       'hero.eyebrow':'macOS · Privacidade em primeiro lugar',
-      'hero.title':'Registre tudo.<br><em class="ink">Não envie nada.</em>',
+      'hero.title':'Registre tudo.<br><em>Não envie nada.</em>',
       'hero.lede':'Uso de apps, bateria, rede e arquivos — um app nativo da barra de menus que mantém <b>100% dos seus dados no seu Mac.</b> Sem nuvem, sem conta, nada é enviado.',
-      'hero.download':'Baixar para macOS','hero.github':'Ver no GitHub',
+      'hero.download':'Baixar para macOS','hero.gitee':'Ver no gitee',
       'hero.req':'<b>Gratuito para uso pessoal</b> · macOS 13+ · Apple Silicon · <b>Autenticado</b>',
       'trust.local':'100% armazenamento local','trust.account':'Sem conta, sem login','trust.notarized':'Autenticado pela Apple','trust.native':'Leve e nativo',
       'feat.kicker':'Um app, o panorama completo',
@@ -636,7 +547,7 @@
       'feat.5t':'Relatórios diários / semanais / mensais','feat.5d':'Relatórios claros e caprichados que transformam atividade bruta em insights — com tráfego de rede e rankings de CPU/memória.',
       'feat.6t':'Controle total dos seus dados','feat.6d':'Apague dados por dia ou categoria e exporte tudo para JSON ou CSV. Os dados são seus — sempre.',
       'screens.kicker':'Dê uma olhada','screens.h2':'Nativo. Refinado. Seu.','screens.lede':'Um app de barra de menus criado com SwiftUI para Apple Silicon — feito para consumir pouquíssimo enquanto roda discretamente em segundo plano.',
-      'cap.1':'Seu Mac num relance','cap.2':'Relatórios diários, semanais e mensais','cap.3':'Atividade de arquivos, agrupada e pesquisável','cap.4':'Varredura de disco e limpeza','cap.5':'Ajuste escopo e lembretes do seu jeito','cap.6':'Uma linha do tempo de uso minuto a minuto','cap.7':'Explore a atividade por pastas',
+      'cap.1':'Relatórios diários, semanais e mensais','cap.2':'Atividade de arquivos, agrupada e pesquisável','cap.3':'Rankings de uso com ícones','cap.4':'Varredura de disco e limpeza',
       'priv.kicker':'Privacidade por design','priv.h2':'Sua vida fica no seu Mac.','priv.lede':'É com isso que o Digital Life mais se importa. Não há servidor para onde enviar seus dados — porque nunca construímos um.',
       'priv.1':'<b>100% local.</b> Tudo é gravado em um banco de dados no seu próprio Mac, sem nenhum envio pela rede.',
       'priv.2':'<b>Uma única conexão opcional.</b> Apenas quando <i>você</i> clica em “Verificar atualizações” — ele busca um número de versão e não envia nenhum dado seu.',
@@ -656,7 +567,7 @@
       var s = (dict[k] != null ? dict[k] : base[k]);
       if (s != null) nodes[i].innerHTML = s;
     }
-    var imgs = document.querySelectorAll('img[data-src-en]');
+    var imgs = document.querySelectorAll('.gallery img');
     for (var j = 0; j < imgs.length; j++) {
       var src = imgs[j].getAttribute('data-src-' + lang) || imgs[j].getAttribute('data-src-en');
       if (src) imgs[j].src = src;
@@ -679,12 +590,6 @@
   apply(saved || detect());
   var sel = document.getElementById('langSelect');
   if (sel) sel.addEventListener('change', function () { apply(sel.value); });
-
-  // reveal on scroll
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
 })();
 </script>
 
