@@ -21,12 +21,12 @@ digitallife quietly records what happens on your Mac day to day: which apps you 
   <img src="images/en/02-report.png" width="49%" alt="Report">
 </p>
 <p align="center">
-  <img src="images/en/03-files.png" width="49%" alt="Files">
-  <img src="images/en/04-apps.png" width="49%" alt="Apps">
+  <img src="images/en/04-files.png" width="49%" alt="Files">
+  <img src="images/en/05-tree.png" width="49%" alt="Apps">
 </p>
 <p align="center">
-  <img src="images/en/05-clean.png" width="49%" alt="Clean">
-  <img src="images/en/06-data.png" width="49%" alt="Data">
+  <img src="images/en/06-clean.png" width="49%" alt="Clean">
+  <img src="images/en/07-settings.png" width="49%" alt="Data">
 </p>
 
 ---
