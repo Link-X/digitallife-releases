@@ -1,5 +1,6 @@
 {
   "version": "1.7.0",
   "build": "19",
+  "minSystemVersion": "26.0",
   "downloadURL": "https://github.com/Link-X/digitallife-releases/releases/download/v1.7.0/DigitalLife-1.7.0.dmg"
 }
